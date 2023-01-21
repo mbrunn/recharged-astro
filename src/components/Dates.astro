@@ -1,0 +1,50 @@
+---
+//const dates:Array<string> = ["Hello", "There", "General", "Kenobi"]
+
+const dates = await Astro.glob('../pages/dates/*.md');
+const  length = dates.length;
+---
+<div class="flex justify-center">
+    <ul class="flex flex-col justify-center p-4 max-w-5xl">
+        { dates.map((date, index) => (
+            index + 1 === dates.length ? 
+                <li class="flex py-1 sm:py-4 px-4 inline-block gap-4 sm:gap-36 text-sm sm:text-3xl content-center">
+                    <p>
+                        { date.frontmatter.date }
+                    </p>
+                    <p> 
+                        { date.frontmatter.name }
+                    </p>
+                    <p>
+                        { date.frontmatter.location }
+                    </p>
+                </li>
+                :
+                <li class="flex py-1 sm:py-4 px-4 inline-block gap-4 sm:gap-36 text-sm sm:text-3xl content-center">
+                    <p>
+                        { date.frontmatter.date }
+                    </p>
+                    <p> 
+                        { date.frontmatter.name }
+                    </p>
+                    <p>
+                        { date.frontmatter.location }
+                    </p>
+                </li>
+                <hr class="border-1 sm:border-2 border-secondary"/>
+        )
+            )
+        }
+    </ul>
+</div>
+
+<style>
+    li {
+        font-family: Iceberg;
+    }
+
+    p {
+        display:inline;
+        word-wrap: break-word;
+    }
+</style>

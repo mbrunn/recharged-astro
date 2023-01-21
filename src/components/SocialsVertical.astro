@@ -1,0 +1,39 @@
+---
+import { Icon } from 'astro-icon'
+---
+
+<!-- Add font awesome icons -->
+<div class="flex flex-col justify-center">
+  <ul class="grid grid-cols-1 gap-2">
+    <li>
+      <a href={ import.meta.env.INSTAGRAM_URL }>
+        <Icon name="mdi:instagram"></Icon>
+      </a>
+    </li>
+    <li>
+      <a href={ import.meta.env.YOUTUBE_URL }>
+        <Icon name="mdi:youtube"></Icon>
+      </a>
+    </li>
+    <li>
+      <a href={ import.meta.env.APPLEMUSIC_URL }>
+        <Icon viewBox="-3 -3 38 38" name="cib:apple-music"></Icon>
+      </a>
+    </li>
+    <li>
+      <a href={ import.meta.env.SPOTIFY_URL }>
+        <Icon name="mdi:spotify"></Icon>
+      </a>
+    </li>
+    <li>
+      <a href={ import.meta.env.FACEBOOK_URL }>
+        <Icon name="mdi:facebook"></Icon>
+      </a>
+    </li>
+    <li>
+      <a href={ "mailto:" + import.meta.env.EMAIL_ADDRESS }>
+        <Icon name="mdi:email"></Icon>
+      </a>
+    </li>
+  </ul>
+</div>

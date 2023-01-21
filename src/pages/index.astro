@@ -1,12 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Transition from "../components/Transition.astro";
+import Card from "../components/Card.astro";
+import YouTubePreview from "../components/YouTubePreview.astro";
+import Dates from "../components/Dates.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Recharged">
   <main>
     <div class="flex justify-center content-center w-full">
       <img src="./images/title_pic.jpg" class="title-img object-fill object-center w-full h-auto" 
       alt="Title picture. Four musicians playing.">
     </div>
+
+    <div class="home-card bg-secondary text-white">
+      <Card title="Hörprobe">
+        <YouTubePreview>
+          
+        </YouTubePreview>
+      </Card>
+    </div>
+
+    <Transition bottomColor="white" topColor="#2e2e2e"/>
+
+    <div class="home-card bg-white text-secondary">
+      <Card title="Auftritte">
+        <Dates>
+          
+        </Dates>
+      </Card>
+    </div>
+
+    <Transition bottomColor="#2e2e2e" topColor="white"/>
+
   </main>
 </Layout>
+
+<style>
+  .home-card {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+  }
+</style>
