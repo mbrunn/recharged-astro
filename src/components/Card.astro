@@ -6,17 +6,15 @@ export interface Props {
 const { title } = Astro.props;
 
 ---
-<div>
-  <h1 class="text-center">
-    { title }
-  </h1>
-  <slot class="flex justify-center align-center"/>
-</div>
+<h1 class="text-center text-3xl sm:text-7xl sm:py-5 py-1">
+  { title }
+</h1>
+<slot/>
 
 <style>
   h1 {
-    font-family: Recharged;
-    font-size: 48px;
+    font-family: Iceberg;
+    font-size: 34px;
     letter-spacing: 0.17em;
   }
 </style>

@@ -1,13 +1,25 @@
 ---
 import SocialsVertical from "./SocialsVertical.astro";
-
+import { Icon } from 'astro-icon'
+import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url, email_address} from '../constants/socials'
 ---
-
 <div class="grid gap-5 grid-rows-1 grid-flow-col justify-center content-center w-full">
-    <div>
-        <h1 class="text-2xl md:text-5xl">
-            All the things inside
+    <div class="flex flex-col justify-center content-center">
+        <h1 class="text-2xl md:text-5xl pb-4">
+            Emptiness inside
         </h1>
+        <iframe class="relative sm:aspect-square aspect-video" src="https://www.youtube.com/embed/MBsCfgj6clw" title="Recharged - Emptiness Inside" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="flex flex-row p-2 gap-2 content-center items-center">
+            <p class="grow text-left pl-1">
+                Emptiness inside
+            </p>
+            <a class="grow-0" href={ applemusic_url }>
+                <Icon class="w-6" viewBox="-3 -3 38 38" name="cib:apple-music"></Icon>
+            </a>
+            <a class="grow-0" href={ spotify_url }>
+                <Icon  class="w-6" name="mdi:spotify"></Icon>
+            </a>
+        </div>
     </div>
     <div class="w-8 sm:w-14 h-auto">
         <SocialsVertical/>

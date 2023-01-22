@@ -5,6 +5,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   integrations: [tailwind()],
   ssr: {
-    noExternal: ['@fortawesome/*'],
-  },
+    noExternal: ['@fortawesome/*']
+  }
 });

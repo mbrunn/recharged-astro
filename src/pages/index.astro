@@ -4,6 +4,10 @@ import Transition from "../components/Transition.astro";
 import Card from "../components/Card.astro";
 import YouTubePreview from "../components/YouTubePreview.astro";
 import Dates from "../components/Dates.astro";
+import Socials from "../components/Socials.astro";
+import { email_address } from "../constants/socials";
+import InstagramPost from "../components/InstagramPost.astro";
+import ImageCarousel from "../components/ImageCarousel.astro";
 ---
 
 <Layout title="Recharged">
@@ -13,7 +17,7 @@ import Dates from "../components/Dates.astro";
       alt="Title picture. Four musicians playing.">
     </div>
 
-    <div class="home-card bg-secondary text-white">
+    <div id="hearing" class="home-card bg-secondary text-white py-3">
       <Card title="Hörprobe">
         <YouTubePreview>
           
@@ -23,7 +27,7 @@ import Dates from "../components/Dates.astro";
 
     <Transition bottomColor="white" topColor="#2e2e2e"/>
 
-    <div class="home-card bg-white text-secondary">
+    <div id="dates" class="home-card bg-white text-secondary py-3">
       <Card title="Auftritte">
         <Dates>
           
@@ -33,6 +37,40 @@ import Dates from "../components/Dates.astro";
 
     <Transition bottomColor="#2e2e2e" topColor="white"/>
 
+    <div class="home-card bg-secondary text-white py-3">
+      <Card title="Auftritte">
+        <InstagramPost>
+          
+        </InstagramPost>
+      </Card>
+    </div>
+
+    <Transition bottomColor="white" topColor="#2e2e2e"/>
+
+    <div class="home-card bg-white text-secondary py-3">
+      <Card title="Socialmedia Links">
+        <Socials></Socials>
+      </Card>
+    </div>
+
+    <Transition bottomColor="#2e2e2e" topColor="white"/>
+
+    <div class="home-card bg-secondary text-white py-3">
+      <ImageCarousel />
+    </div>
+
+    <div class="home-card bg-secondary text-white py-3">
+      <div class="flex flex-col justify-center gap-2">
+        <h2 class="text-center text-2xl sm:text-4xl pb-2">
+          Interesse geweckt?
+        </h2>
+        <a href={ "mailto:" + email_address }>
+          <button class="book-now bg-primary px-5 py-2.5 box-shadow">
+            Jetzt buchen
+          </button>
+        </a>
+      </div>
+    </div>
   </main>
 </Layout>
 
@@ -41,5 +79,10 @@ import Dates from "../components/Dates.astro";
     justify-content: center;
     text-align: center;
     width: 100%;
+  }
+
+  h2, button {
+    font-family: Iceberg;
+    letter-spacing: 0.17em;
   }
 </style>

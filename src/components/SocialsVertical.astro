@@ -1,37 +1,38 @@
 ---
 import { Icon } from 'astro-icon'
+import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url, email_address} from '../constants/socials'
 ---
 
 <!-- Add font awesome icons -->
 <div class="flex flex-col justify-center">
   <ul class="grid grid-cols-1 gap-2">
-    <li>
-      <a href={ import.meta.env.INSTAGRAM_URL }>
+    <li class="items-center">
+      <a href={ instagram_url }>
         <Icon name="mdi:instagram"></Icon>
       </a>
     </li>
-    <li>
-      <a href={ import.meta.env.YOUTUBE_URL }>
+    <li class="items-center">
+      <a href={ youtube_url }>
         <Icon name="mdi:youtube"></Icon>
       </a>
     </li>
-    <li>
-      <a href={ import.meta.env.APPLEMUSIC_URL }>
+    <li class="items-center">
+      <a href={ applemusic_url }>
         <Icon viewBox="-3 -3 38 38" name="cib:apple-music"></Icon>
       </a>
     </li>
-    <li>
-      <a href={ import.meta.env.SPOTIFY_URL }>
+    <li class="items-center">
+      <a href={ spotify_url }>
         <Icon name="mdi:spotify"></Icon>
       </a>
     </li>
-    <li>
-      <a href={ import.meta.env.FACEBOOK_URL }>
+    <li class="items-center">
+      <a href={ facebook_url }>
         <Icon name="mdi:facebook"></Icon>
       </a>
     </li>
-    <li>
-      <a href={ "mailto:" + import.meta.env.EMAIL_ADDRESS }>
+    <li class="items-center">
+      <a href={ "mailto:" + email_address }>
         <Icon name="mdi:email"></Icon>
       </a>
     </li>

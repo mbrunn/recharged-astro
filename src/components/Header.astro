@@ -1,5 +1,6 @@
 ---
 import Navigation from './Navigation.astro';
+import { email_address } from '../constants/socials';
 ---
 <header>
   <nav class="bg-secondary px-2 sm:px-4 py-2.5">
@@ -14,19 +15,19 @@ import Navigation from './Navigation.astro';
       </button>
       <div class="hidden w-full md:block md:w-auto text-white" id="navbar-default">
         <ul class="flex flex-row p-4 mt-4 items-center gap-2.5">
-          <li>
+          <!--<li>
             <a href="#">Über uns</a>
           </li>
-          &#124;
+          &#124;-->
           <li>
-            <a href="#">Termine</a>
+            <a class="will-change-auto hover:will-change-scroll" href="#dates">Termine</a>
           </li>
           &#124;
           <li>
-            <a href="#">Hörprobe</a>
+            <a class="will-change-auto hover:will-change-scroll" href="#hearing">Hörprobe</a>
           </li>
           <li>
-            <a href={ "mailto:" + import.meta.env.EMAIL_ADDRESS }>
+            <a href={ "mailto:" + email_address }>
               <button class="ml-3 book-now bg-primary px-5 py-2.5 box-shadow">
                 Jetzt buchen
               </button>

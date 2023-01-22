@@ -1,36 +1,52 @@
 ---
 //const dates:Array<string> = ["Hello", "There", "General", "Kenobi"]
 
-const dates = await Astro.glob('../pages/dates/*.md');
-const  length = dates.length;
+interface Gig {
+    day: string;
+    name: string;
+    city: string;
+    link?: string;
+}
+
+import json from '../pages/dates/dates.json';
+
+const dates = await Astro.glob('../pages/dates/dates.json');
+let datesJson = json as Array<Gig>;
+
 ---
+
 <div class="flex justify-center">
-    <ul class="flex flex-col justify-center p-4 max-w-5xl">
-        { dates.map((date, index) => (
-            index + 1 === dates.length ? 
-                <li class="flex py-1 sm:py-4 px-4 inline-block gap-4 sm:gap-36 text-sm sm:text-3xl content-center">
-                    <p>
-                        { date.frontmatter.date }
-                    </p>
-                    <p> 
-                        { date.frontmatter.name }
-                    </p>
-                    <p>
-                        { date.frontmatter.location }
-                    </p>
-                </li>
+    <ul class="flex flex-col justify-center p-4 w-full sm:max-w-5xl">
+        { datesJson.map((date, index) => (
+            index + 1 === datesJson.length ? 
+                <a href={ date.link } >
+                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-items-center justify-center text-center">
+                        <p>
+                            { date.day }
+                        </p>
+                        <p> 
+                            { date.name }
+                        </p>
+                        <p>
+                            { date.city }
+                        </p>
+                    </li>
+                </a>
+                
                 :
-                <li class="flex py-1 sm:py-4 px-4 inline-block gap-4 sm:gap-36 text-sm sm:text-3xl content-center">
-                    <p>
-                        { date.frontmatter.date }
-                    </p>
-                    <p> 
-                        { date.frontmatter.name }
-                    </p>
-                    <p>
-                        { date.frontmatter.location }
-                    </p>
-                </li>
+                <a href={ date.link } >
+                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-items-center justify-center text-center">
+                        <p>
+                            { date.day }
+                        </p>
+                        <p> 
+                            { date.name }
+                        </p>
+                        <p>
+                            { date.city }
+                        </p>
+                    </li>
+                </a>
                 <hr class="border-1 sm:border-2 border-secondary"/>
         )
             )
