@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}', "./node_modules/flowbite/**/*.js"],
+  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}', './node_modules/tw-elements/dist/js/**/*.js'],
     theme: {
         extend: {},
         container: {
@@ -53,6 +53,6 @@ module.exports = {
         }
     },
     plugins: [
-        require('flowbite/plugin')
+        require('tw-elements/dist/plugin')
     ]
 }

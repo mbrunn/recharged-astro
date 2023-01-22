@@ -4,16 +4,16 @@ import Transition from "../components/Transition.astro";
 import Card from "../components/Card.astro";
 import YouTubePreview from "../components/YouTubePreview.astro";
 import Dates from "../components/Dates.astro";
-import Socials from "../components/Socials.astro";
-import { email_address } from "../constants/socials";
 import InstagramPost from "../components/InstagramPost.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
+import BookNowButton from "../components/BookNowButton.astro";
+import PersonGallery from "../components/PersonGallery.astro";
 ---
 
 <Layout title="Recharged">
   <main>
     <div class="flex justify-center content-center w-full">
-      <img src="./images/title_pic.jpg" class="title-img object-fill object-center w-full h-auto" 
+      <img src="/images/title_pic.jpg" class="title-img object-fill object-center w-full h-auto" 
       alt="Title picture. Four musicians playing.">
     </div>
 
@@ -48,15 +48,15 @@ import ImageCarousel from "../components/ImageCarousel.astro";
     <Transition bottomColor="white" topColor="#2e2e2e"/>
 
     <div class="home-card bg-white text-secondary py-3">
-      <Card title="Socialmedia Links">
-        <Socials></Socials>
+      <Card title="Die Band">
+        <PersonGallery />
       </Card>
     </div>
 
     <Transition bottomColor="#2e2e2e" topColor="white"/>
 
     <div class="home-card bg-secondary text-white py-3">
-      <ImageCarousel />
+      <!--<ImageCarousel path="/images/carousel" />-->
     </div>
 
     <div class="home-card bg-secondary text-white py-3">
@@ -64,11 +64,7 @@ import ImageCarousel from "../components/ImageCarousel.astro";
         <h2 class="text-center text-2xl sm:text-4xl pb-2">
           Interesse geweckt?
         </h2>
-        <a href={ "mailto:" + email_address }>
-          <button class="book-now bg-primary px-5 py-2.5 box-shadow">
-            Jetzt buchen
-          </button>
-        </a>
+        <BookNowButton />
       </div>
     </div>
   </main>
