@@ -20,8 +20,8 @@ let datesJson = json as Array<Gig>;
         { datesJson.map((date, index) => (
             index + 1 === datesJson.length ? 
                 <a href={ date.link } >
-                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-items-center justify-center text-center">
-                        <p>
+                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-center items-center">
+                        <p class="">
                             { date.day }
                         </p>
                         <p> 
@@ -35,7 +35,7 @@ let datesJson = json as Array<Gig>;
                 
                 :
                 <a href={ date.link } >
-                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-items-center justify-center text-center">
+                    <li class="grid grid-rows-1 grid-cols-3 py-4 inline-block text-md sm:text-3xl justify-center items-center">
                         <p>
                             { date.day }
                         </p>
