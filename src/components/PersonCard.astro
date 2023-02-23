@@ -1,16 +1,20 @@
 ---
+import { AstroComponentInstance } from "astro/dist/runtime/server";
+
 export interface Person {
     name: string;
     imageSrc: string;
     position: string;
 }
+
+const { name, imageSrc, position } = Astro.props as Person;
 ---
 
 <div class="flex flex-col w-full h-auto bg-secondary text-white transition ease-in-out hover:scale-105 duration-300">
-    <img src="/images/band/benni.jpg" />
+    <img src={ imageSrc } />
     <div class="flex flex-col gap-2.5 justify-center items-center p-3">
-        <h1 class="text-xl ">Benjaming Erpl</h1>
-        <h2 class="text-lg">Gitarre</h2>
+        <h1 class="text-xl ">{ name }</h1>
+        <h2 class="text-lg">{ position }</h2>
     </div>
 </div>
 
