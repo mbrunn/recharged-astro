@@ -19,7 +19,7 @@ let datesJson = json as Array<Gig>;
     <ul class="flex flex-col justify-center p-4 w-full sm:max-w-5xl">
         { datesJson.map((date, index) => (
             index + 1 === datesJson.length ? 
-                <a href={ date.link } >
+                <a href={ date.link } target="_blank" rel="noopener noreferrer">
                     <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                         <p>
                             { date.day }
@@ -34,7 +34,7 @@ let datesJson = json as Array<Gig>;
                 </a>
                 
                 :
-                <a href={ date.link } >
+                <a href={ date.link } target="_blank" rel="noopener noreferrer">
                     <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                         <p>
                             { date.day }
