@@ -2,52 +2,58 @@
 //const dates:Array<string> = ["Hello", "There", "General", "Kenobi"]
 
 interface Gig {
-    day: string;
+    day: Date;
+    time: string;
     name: string;
-    city: string;
+    location: string;
     link?: string;
+    active: boolean;
 }
 
-import json from '../pages/dates/dates.json';
+//import json from '../pages/dates/dates.json';
 
-const dates = await Astro.glob('../pages/dates/dates.json');
-let datesJson = json as Array<Gig>;
+//const dates = await Astro.glob('../pages/dates/dates.json');
+//let datesJson = json as Array<Gig>;
+
+const dates = await Astro.glob<Gig>('../pages/dates/*.md');
 
 ---
 
 <div class="flex justify-center">
     <ul class="flex flex-col justify-center p-4 w-full sm:max-w-5xl">
-        { datesJson.map((date, index) => (
-            index + 1 === datesJson.length ? 
-                <a href={ date.link } target="_blank" rel="noopener noreferrer">
-                    <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
-                        <p>
-                            { date.day }
-                        </p>
-                        <p> 
-                            { date.name }
-                        </p>
-                        <p>
-                            { date.city }
-                        </p>
-                    </li>
-                </a>
-                
-                :
-                <a href={ date.link } target="_blank" rel="noopener noreferrer">
-                    <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
-                        <p>
-                            { date.day }
-                        </p>
-                        <p> 
-                            { date.name }
-                        </p>
-                        <p>
-                            { date.city }
-                        </p>
-                    </li>
-                </a>
-                <hr class="border-1 sm:border-2 border-white"/>
+        { dates.map((date, index) => (
+            date.frontmatter.active ? 
+                index + 1 === dates.length ? 
+                    <a href={ date.frontmatter.link } target="_blank" rel="noopener noreferrer">
+                        <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                            <p>
+                                { (date.frontmatter.day instanceof Date) ? date.frontmatter.day.toLocaleDateString() : new Date(date.frontmatter.day).toLocaleDateString() }
+                            </p>
+                            <p> 
+                                { date.frontmatter.name }
+                            </p>
+                            <p>
+                                { date.frontmatter.location }
+                            </p>
+                        </li>
+                    </a>
+                    
+                    :
+                    <a href={ date.frontmatter.link } target="_blank" rel="noopener noreferrer">
+                        <li class="flex flex-row gap-1 sm:gap-10 justify-between py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                            <p>
+                                { (date.frontmatter.day instanceof Date) ? date.frontmatter.day.toLocaleDateString() : new Date(date.frontmatter.day).toLocaleDateString() }
+                            </p>
+                            <p> 
+                                { date.frontmatter.name }
+                            </p>
+                            <p>
+                                { date.frontmatter.location }
+                            </p>
+                        </li>
+                    </a>
+                    <hr class="border-1 sm:border-2 border-white"/>
+                : <div> </div>
         )
             )
         }
