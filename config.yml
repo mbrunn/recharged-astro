@@ -1,0 +1,33 @@
+backend:
+  name: git-gateway
+  branch: main
+
+publish_mode: editorial_workflow
+
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - label: "Gig Dates"
+    name: "dates"
+    folder: "src/pages/dates"
+    create: true
+    delete: true
+    slug: "{{ day }} - {{ name }}"
+    fields: 
+      - { name: 'day', widget: 'date', label: 'Datum' }
+      - { name: 'time', widget: 'string', label: 'Uhrzeit' }
+      - { name: 'name', widget: 'string', label: 'Gig Name' }
+      - { name: 'location', widget: 'string', label: 'Location (z.B.: Sommerszene)' }
+      - { name: 'link', widget: 'string', label: 'Link zu Tickets / der VA' }
+      - { name: 'active', widget: 'boolean', label: 'Anzeigen' }
+
+  - label: "About Us"
+    name: "about"
+    folder: "src/pages/about"
+    slug: "about"
+    preview_path: "about"
+    preview_path_date_field: "published_at"
+    fields:
+      - { name: 'text', widget: 'text', label: 'About Us Text' }
+      - { name: 'name', widget: 'string', label: 'Gig Name' }
