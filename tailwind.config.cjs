@@ -2,9 +2,14 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}', './node_modules/tw-elements/dist/js/**/*.js'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
     theme: {
-        extend: {},
+        extend: {
+            maxHeight: {
+              '128': '36rem',
+              'halfscreen': '50vh'
+            },
+        },
         container: {
             center: true,
         },
@@ -53,6 +58,20 @@ module.exports = {
         }
     },
     plugins: [
-        require('tw-elements/dist/plugin')
-    ]
+        require("daisyui")
+    ],
+    daisyui: {
+        styled: true,
+        base: true,
+        utils: true,
+        logs: false,
+        rtl: true,
+        prefix: "",
+        themes: [{
+            mytheme: {
+                primary: "#D07600",
+                secondary: "#2E2E2E",
+            },
+        }]
+      },
 }

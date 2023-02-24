@@ -12,9 +12,8 @@ import PersonGallery from "@components/PersonGallery.astro";
 
 <Layout title="Recharged">
   <main>
-    <div class="flex justify-center content-center bg-cover bg-[url('/images/background.jpg')]">
-      <img src="/images/title_pic.png" class="object-center object-scale-down" 
-      alt="Title picture. Four musicians playing.">
+    <div class="flex justify-center content-center bg-cover bg-[url('/images/background.jpg')] sm:max-h-128 w-full">
+      <img src="/images/title_pic.png" class="object-center object-scale-down" alt="Title picture. Four musicians."/>
     </div>
 
     <div id="hearing" class="home-card bg-secondary text-white py-3">
@@ -37,7 +36,15 @@ import PersonGallery from "@components/PersonGallery.astro";
 
     <Transition bottomColor="#2e2e2e" topColor="white"/>
 
-    <div id="dates" class="home-card bg-secondary text-white py-3">
+    <div class="home-card bg-secondary text-white py-3">
+      <Card title="Bilder">
+        <ImageCarousel />
+      </Card>
+    </div>
+
+    <Transition bottomColor="white" topColor="#2e2e2e"/>
+
+    <div id="dates" class="home-card bg-white text-secondary py-3">
       <Card title="Auftritte">
         <Dates>
           
@@ -45,15 +52,13 @@ import PersonGallery from "@components/PersonGallery.astro";
       </Card>
     </div>
 
-    <Transition bottomColor="white" topColor="#2e2e2e"/>
+    <Transition bottomColor="#2e2e2e" topColor="white"/>
 
-    <div class="home-card bg-white text-secondary py-3">
+    <div class="home-card bg-secondary text-white py-3">
       <Card title="Die Band">
         <PersonGallery />
       </Card>
     </div>
-
-    <Transition bottomColor="#2e2e2e" topColor="white"/>
 
     <div class="home-card bg-secondary text-white py-3">
       <!--<ImageCarousel path="/images/carousel" />-->
