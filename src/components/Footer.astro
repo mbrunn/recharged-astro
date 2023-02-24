@@ -1,13 +1,15 @@
 ---
 import Socials from "./Socials.astro";
+import { email_address } from '../constants/socials';
 ---
 
 <footer class="bg-secondary text-white w-full p-2">
   <div class="container sm:w-1/2 h-auto text-center">
     <Socials/>
     <p>
-      Recharged | 2023
+      Recharged | 2023 | <a href={ "mailto:" + email_address }>{email_address}</a>
     </p>
+    
   </div>
   
 </footer>
