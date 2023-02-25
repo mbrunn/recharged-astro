@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import Card from "@components/Card.astro";
 import { Icon } from 'astro-icon'
 
+import { dropbox_link } from '../constants/socials'
+
 const {frontmatter} = Astro.props;
 ---
 
@@ -10,8 +12,11 @@ const {frontmatter} = Astro.props;
   <main>
       <div class="home-card bg-secondary text-white py-3">
           <Card title={frontmatter.title}>
-            <a href="" class="flex justify-center">
-              <Icon name="mdi:dropbox" class="w-11"></Icon>
+            <a href={dropbox_link} class="flex flex-row items-center justify-center content-center" target="_blank" rel="noopener noreferrer">
+              <Icon name="mdi:dropbox" class="sm:w-11 w-7"></Icon>
+              <div class="flex justify-center content-center">
+                <h2 class="px-4 sm:text-2xl text-lg">Werbematerial</h2>
+              </div>
             </a>
           </Card>
           <div class="w-full flex justify-center">
