@@ -6,8 +6,24 @@ import { email_address } from '../constants/socials';
 <footer class="bg-secondary text-white w-full p-2">
   <div class="container sm:w-1/2 h-auto text-center">
     <Socials/>
-    <p>
+    <p class="hidden sm:block">
       Recharged | 2023 | <a href={ "mailto:" + email_address }>{email_address}</a>
+    </p>
+
+    <p class="block sm:hidden">
+      Recharged | 2023 
+      <p class="break-words text-xl py-2 block sm:hidden">
+        <a class="block sm:hidden" href={ "mailto:" + email_address }>{email_address}</a>
+      </p>
+    </p>
+
+    <p class="hidden sm:block text-center text-sm">
+      <a href="/impressum">Impressum</a> | Entworfen und erstellt von Michael Brunner mit <a href="https://astro.build">astro</a>
+    </p>
+
+    <p class="block sm:hidden text-center text-sm py-2">
+      <a href="/impressum">Impressum</a>
+      <p class="block sm:hidden text-center text-sm">Entworfen und erstellt von Michael Brunner mit <a href="https://astro.build">astro</a></p>
     </p>
     
   </div>

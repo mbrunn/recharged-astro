@@ -8,4 +8,4 @@ export const spotify_url = "https://open.spotify.com/artist/2q1RWrdpcKIR53XCkAdE
 
 export const facebook_url = "https://www.facebook.com/rechargedmiba/"
 
-export const email_address = "rechargedmiba@gmail.com"
+export const email_address = "office@recharged.at"
