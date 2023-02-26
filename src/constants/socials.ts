@@ -10,4 +10,4 @@ export const facebook_url = "https://www.facebook.com/rechargedmiba/"
 
 export const email_address = "office@recharged.at"
 
-export const dropbox_link = ""
+export const dropbox_link = "https://www.dropbox.com/sh/g1aa6orx2dr018u/AADLUiIfRRqF4g_I1NmVzR1Fa?dl=0"
