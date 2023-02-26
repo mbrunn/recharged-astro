@@ -3,9 +3,18 @@ layout: ../layouts/about.astro
 title: Über uns
 author: Michael
 description: Ein Text über Recharged.
+setup: |
+    import { email_address } from '../constants/socials';
 ---
 
-Wohl kaum eine Emotion wurde im Laufe des Lebens noch nicht durchlebt. Seien es Euphorie, Stolz und Liebe oder auch Hass, Reue und Hilfslosigkeit. Wir - **RECHARGED** - bringen diese in unseren englischen Texten zum Vorschein.
+Wir sind eine **Alternativ-Rockband aus dem Weinviertel**. Mit einer Mischung aus unseren Eigenkompositionen und neu interpretierten, bekannten Liedern, sorgen wir seit 2015 für gute Unterhaltung. Wir können bereits auf viele erfolgreiche Auftritte zurückblicken, unter anderem in der **Sommerszene Mistelbach**, bei **Christmas in Mistelbach**, beim **Borg-Ball Mistelbach** sowie zuletzt im **Alten Depot Mistelbach**. Darüber hinaus waren wir auch als Vorband diverser heimischer Künstler, wie zum Beispiel **Skolka**, **PBH-Club** oder **Meister Grössing & seine Homöopathen** zu hören.
+Neben unseren Bandprojekt sind wir auch als Stageband im Einsatz, beispielsweise für den **A-Capella-Chor Weinviertel** oder bei **Produktionen der Musicalklasse Staatz**. Gelegentlich verschlägt es uns sogar zu der ein oder anderen Trauung.
+&nbsp;<br>
+&nbsp;<br>
+Bei Interesse könnt ihr uns einfach per E-Mail unter <a href="mailto: office@recharged.at">office@recharged.at</a> erreichen.
+&nbsp;<br>
+&nbsp;<br>
+Wohl kaum eine Emotion wurde im Laufe des Lebens noch nicht durchlebt. Seien es Euphorie, Stolz, Liebe, Hass, Reue oder auch Hilfslosigkeit. Wir - **RECHARGED** - bringen diese in unseren Eigenkompositionen mit englischen Texten zum Vorschein. 
 &nbsp;<br>
 &nbsp;<br>
 Man hat uns gesagt, dass das zu wenig is, also:
