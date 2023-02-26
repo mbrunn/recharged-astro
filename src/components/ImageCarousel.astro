@@ -33,33 +33,70 @@ function getPreviousImageID(current: number) {
 
   let dots = document.getElementsByClassName("dot");
   let arrows = document.getElementsByClassName("btn");
+  let images = document.getElementsByClassName("carousel-item");
+
+  let activePicture = 0;
+
+  dots[0].className += " active";
+
+  function getLastImageID() {
+    return images.length;
+  }
+
+  function getNextImageID(current: number) {
+    let nextID = current + 1
+    if (nextID >= getLastImageID()) {
+      return 0;
+    }
+    else {
+      return nextID;
+    }
+  }
+
+  function getPreviousImageID(current: number) {
+    let prevID = current - 1
+    if (prevID < 0) {
+      return getLastImageID() - 1;
+    }
+    else {
+      return prevID;
+    }
+  }
 
   for (let a = 0; a < arrows.length; a++) {
     arrows[a].addEventListener("click", function() {
       if(arrows[a].textContent.includes("❮")) {
         console.log("PREVIOUS");
-        activePicture
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        activePicture = getPreviousImageID(a);
+        console.log(a);
+        console.log(activePicture);
+        dots[a].className += " active";
+
       } else if (arrows[a].textContent.includes("❯")) {
         console.log("NEXT");
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        activePicture = getNextImageID(a);
+        console.log(a);
+        console.log(activePicture);
+        dots[a].className += " active";
       }
     })
   }
-
-  for (let i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-
-  dots[1].className += " active";
 </script>
 <div class="flex justify-items-center justify-center">
   <div class="flex carousel w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128">
 
     {images.map((image, index) => (
-      <div id={ index.toString() } class="carousel-item relative w-full justify-center overflow-visible">
+      <div id={ index.toString() } class="carousel-item relative w-full justify-center">
         <Image alt={ image.default } src={ image.default } class="object-contain"/>
         <div class="absolute flex justify-between transform -translate-y-1/2 left-3 right-3 top-1/2">
-          <a href={ '#' + getPreviousImageID(index).toString() } class="btn btn-circle">❮</a> 
-          <a href={ '#' + getNextImageID(index).toString() } class="btn btn-circle">❯</a>
+          <a href={ '#' + getPreviousImageID(index).toString() } class="btn btn-circle invisible sm:visible">❮</a> 
+          <a href={ '#' + getNextImageID(index).toString() } class="btn btn-circle invisible sm:visible">❯</a>
         </div>
         
       </div>

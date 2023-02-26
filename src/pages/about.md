@@ -8,7 +8,7 @@ setup: |
 ---
 
 Wir sind eine **Alternativ-Rockband aus dem Weinviertel**. Mit einer Mischung aus unseren Eigenkompositionen und neu interpretierten, bekannten Liedern, sorgen wir seit 2015 für gute Unterhaltung. Wir können bereits auf viele erfolgreiche Auftritte zurückblicken, unter anderem in der **Sommerszene Mistelbach**, bei **Christmas in Mistelbach**, beim **Borg-Ball Mistelbach** sowie zuletzt im **Alten Depot Mistelbach**. Darüber hinaus waren wir auch als Vorband diverser heimischer Künstler, wie zum Beispiel **Skolka**, **PBH-Club** oder **Meister Grössing & seine Homöopathen** zu hören.
-Neben unseren Bandprojekt sind wir auch als Stageband im Einsatz, beispielsweise für den **A-Capella-Chor Weinviertel** oder bei **Produktionen der Musicalklasse Staatz**. Gelegentlich verschlägt es uns sogar zu der ein oder anderen Trauung.
+Neben unseren Bandprojekt sind wir auch als Stageband im Einsatz, beispielsweise für den **A-Capella-Chor Weinviertel** oder bei **Produktionen der Musicalklasse Staatz**.
 &nbsp;<br>
 &nbsp;<br>
 Bei Interesse könnt ihr uns einfach per E-Mail unter <a href="mailto: office@recharged.at">office@recharged.at</a> erreichen.
