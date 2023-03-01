@@ -1,6 +1,6 @@
 ---
 import Navigation from './Navigation.astro';
-import { email_address } from '../constants/socials';
+import { email_address, dropbox_link } from '../constants/socials';
 import BookNowButton from './BookNowButton.astro';
 ---
 
@@ -8,10 +8,9 @@ import BookNowButton from './BookNowButton.astro';
   const button = document.querySelector('#menu-button');
   const menu = document.querySelector('#navbar-default');
 
-
   button.addEventListener('click', () => {
     menu.classList.toggle('hidden');
-});
+  });
 
 </script>
 
@@ -40,6 +39,10 @@ import BookNowButton from './BookNowButton.astro';
           <p class="hidden sm:inline">&#124;</p>
           <li>
             <a class="will-change-auto hover:will-change-scroll" href="/#hearing">Hörprobe</a>
+          </li>
+          <p class="hidden sm:inline">&#124;</p>
+          <li>
+            <a class="will-change-auto" href={dropbox_link}>Presse</a>
           </li>
           <li class="sm:pl-4">
             <BookNowButton />
