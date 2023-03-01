@@ -41,11 +41,71 @@ import { SEO } from "astro-seo";
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
+
+  <!-- Put this part before </body> tag -->
+  <input type="checkbox" id="my-modal-6" class="modal-toggle" />
+  <div class="modal modal-bottom sm:modal-middle">
+    <div class="modal-box">
+      <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+      <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+      <div class="modal-action">
+        <label for="my-modal-6" class="btn">Yay!</label>
+      </div>
+    </div>
+  </div>
+
   <body>
     <Header/>
     <slot />
-    <Footer/>
+    <Footer/>    
   </body>
+  <!-- Import Web Component -->
+  <script
+  type="module"
+  src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+  ></script>
 
+  <style>
+  :root {
+    --cookie-consent-banner-z-index-container: 101;
+    --cookie-consent-banner-colors-primary: #d07600;
+    --cookie-consent-banner-colors-primary-border: var(
+      --cookie-consent-banner-colors-primary
+    );
+    --cookie-consent-banner-colors-primary-content: #fff;
+
+    --cookie-consent-banner-border-radius-buttons: 100px;
+    --cookie-consent-banner-border-radius-body: 0;
+
+    --cookie-consent-banner-spacings-container-padding-top: 0;
+    --cookie-consent-banner-spacings-container-padding-left: 0;
+    --cookie-consent-banner-spacings-container-padding-bottom: 0;
+    --cookie-consent-banner-spacings-container-padding-right: 0;
+  }
+  </style>
+
+  <!-- Init Web Component -->
+  <cookie-consent-banner
+  btn-label-accept-and-continue="Akzeptieren"
+  btn-label-only-essential-and-continue="Nur notwendige"
+  btn-label-persist-selection-and-continue="Save selection and continue"
+  btn-label-select-all-and-continue="Select all and continue"
+  content-settings-description="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
+  >
+  We use cookies and similar technologies to provide certain features, enhance
+  the user experience and deliver content that is relevant to your interests.
+  Depending on their purpose, analysis and marketing cookies may be used in
+  addition to technically necessary cookies. By clicking on "Agree and
+  continue", you declare your consent to the use of the aforementioned cookies.
+  <a
+    href="javascript:document.dispatchEvent(new Event('cookie_consent_details_show'))"
+  >
+    Here
+  </a>
+  you can make detailed settings or revoke your consent (in part if necessary)
+  with effect for the future. For further information, please refer to our
+  <a href="/privacy-policy">Privacy Policy</a>
+  .
+  </cookie-consent-banner>
   
 </html>
