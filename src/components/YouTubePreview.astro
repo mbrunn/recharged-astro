@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon";
-import { applemusic_url, spotify_url } from "../constants/socials";
+import { applemusic_url, spotify_url, youtube_url } from "../constants/socials";
 ---
 
 <div class="flex justify-center">
@@ -14,6 +14,7 @@ import { applemusic_url, spotify_url } from "../constants/socials";
             class="instagram-media w-full aspect-video relative flex"
             style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"
         >
+            
             <iframe
                 class="w-full aspect-video relative flex hidden"
                 title="RECHARGED - Masquerade"
@@ -23,13 +24,18 @@ import { applemusic_url, spotify_url } from "../constants/socials";
                 id="youtube-skeleton"
                 class="flex flex-col sm:text-xl p-4 gap-2 justify-center content-center items-center text-black"
             >
-                Du musst leider den Cookies zustimmen, um dieses YouTube-Video
-                zu sehen.
+                <a class="flex flex-col content-center justify-center items-center" href={ youtube_url }>
+                    <Icon class="h-12 w-12" name="mdi:youtube"></Icon>
+                    <p style=" color:#d07600; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                        Sieh dir dieses Video auf YouTube an
+                    </p>
+                </a>
+                <p class="mt-2">Hier sollte eigentlich ein YouTube-Video eines Songs von uns sein. Aber leider musst du dafür erst der Speicherung von YouTube-Cookies zustimmen.</p>
                 <a onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
                     id="youtube-consent-button"
                     class="btn bg-primary border-none text-white sm:text-xl hover:scale-105"
                 >
-                    YouTube Cookies akzeptieren
+                    YouTube-Cookies akzeptieren
                 </a>
             </div>
         </blockquote>
