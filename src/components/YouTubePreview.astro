@@ -1,25 +1,57 @@
 ---
-import SocialsVertical from "./SocialsVertical.astro";
-import { Icon } from 'astro-icon'
-import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url, email_address} from '../constants/socials'
+import { Icon } from "astro-icon";
+import { applemusic_url, spotify_url } from "../constants/socials";
 ---
+
 <div class="flex justify-center">
-    <div class="flex flex-col justify-center content-center w-full sm:max-w-2xl pt-3">
-        <h1 class="text-2xl md:text-5xl pb-4">
-            Masquerade
-        </h1>
-        <iframe class="relative aspect-video" src="https://www.youtube-nocookie.com/embed/e8gmToIEkfI" title="RECHARGED - Masquerade" frameborder="0" allow="clipboard-write; encrypted-media; web-share" allowfullscreen></iframe>
+    <div
+        class="flex flex-col justify-center content-center w-full sm:max-w-2xl pt-3"
+    >
+        <h1 class="text-2xl md:text-5xl pb-4">Masquerade</h1>
+
+        <blockquote
+            id="youtube-container"
+            class="instagram-media w-full aspect-video relative flex"
+            style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"
+        >
+            <iframe
+                class="w-full aspect-video relative flex hidden"
+                title="RECHARGED - Masquerade"
+                allow="clipboard-write; encrypted-media; web-share"
+                allowfullscreen></iframe>
+            <div
+                id="youtube-skeleton"
+                class="flex flex-col sm:text-xl p-4 gap-2 justify-center content-center items-center text-black"
+            >
+                Du musst leider den Cookies zustimmen, um dieses YouTube-Video
+                zu sehen.
+                <a onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
+                    id="youtube-consent-button"
+                    class="btn bg-primary border-none text-white sm:text-xl hover:scale-105"
+                >
+                    YouTube Cookies akzeptieren
+                </a>
+            </div>
+        </blockquote>
+
         <div class="flex flex-row p-2 gap-2 content-center items-center">
             <p class="grow text-left sm:text-xl p-4">
                 Einer unserer frühen Songs aus unserem ersten Album.
-                <br/>
+                <br />
                 Jetzt auch auf Spotify und Apple Music:
             </p>
-            <a href={ applemusic_url }>
-                <Icon class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200" viewBox="-3 -3 38 38" name="cib:apple-music"></Icon>
+            <a href={applemusic_url}>
+                <Icon
+                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200"
+                    viewBox="-3 -3 38 38"
+                    name="cib:apple-music"
+                />
             </a>
-            <a href={ spotify_url }>
-                <Icon  class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200" name="mdi:spotify"></Icon>
+            <a href={spotify_url}>
+                <Icon
+                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200"
+                    name="mdi:spotify"
+                />
             </a>
         </div>
     </div>
@@ -27,6 +59,6 @@ import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url,
 
 <style>
     h1 {
-        font-family: 'Iceberg';
+        font-family: "Iceberg";
     }
 </style>

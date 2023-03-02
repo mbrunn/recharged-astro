@@ -1,0 +1,38 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Card from "@components/Card.astro";
+import { Icon } from 'astro-icon'
+
+import { dropbox_link } from '../constants/socials'
+
+const {frontmatter} = Astro.props;
+---
+
+<Layout title="Recharged - Über uns">
+  <main>
+      <div class="home-card bg-secondary text-white py-3">
+          <Card title={frontmatter.title}>
+          </Card>
+          <div class="w-full flex justify-center">
+            <div class="flex justify-items-center p-6 min-h-screen sm:max-w-6xl">  
+              <div class="text-justify text-lg leading-relaxed sm:text-2xl sm:leading-loose">
+                <slot/>
+              </div>
+            </div>
+          </div>
+        </div>
+  </main>
+</Layout>
+
+<style>
+    .home-card {
+      justify-content: center;
+      text-align: center;
+      width: 100%;
+    }
+  
+    h2, button {
+      font-family: Iceberg;
+      letter-spacing: 0.17em;
+    }
+  </style>
