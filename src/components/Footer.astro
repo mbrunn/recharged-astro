@@ -20,7 +20,7 @@ import { email_address } from '../constants/socials';
     <p class="hidden sm:block text-center text-sm">
       <a href="/impressum">Impressum</a> | Entworfen und erstellt von Michael Brunner mit <a href="https://astro.build">astro</a>
       <!-- Open Banner again -->
-      <a class="block text-center text-sm pt-3" href="javascript:document.dispatchEvent(new Event('cookie_consent_show'))">
+      <a class="block text-center text-sm pt-3 cursor-pointer" onclick="document.dispatchEvent(new Event('cookie_consent_show'))">
         Cookie Consent Settings
       </a>
     </p>
@@ -29,7 +29,7 @@ import { email_address } from '../constants/socials';
       <a href="/impressum">Impressum</a>
       <p class="block sm:hidden text-center text-sm">Entworfen und erstellt von Michael Brunner mit <a href="https://astro.build">astro</a></p>
       <!-- Open Banner again -->
-      <a class="block sm:hidden text-center text-sm pt-3" href="javascript:document.dispatchEvent(new Event('cookie_consent_show'))">
+      <a class="block sm:hidden text-center text-sm pt-3 cursor-pointer" onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))">
         Cookie Consent Settings
       </a>
     </p>

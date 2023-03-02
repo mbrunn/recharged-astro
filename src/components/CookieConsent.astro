@@ -1,0 +1,213 @@
+---
+import { youtube_video_url } from "@/constants/socials";
+---
+
+<!-- Import Web Component -->
+<script
+    type="module"
+    src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+></script>
+
+<style>
+    :root {
+        --cookie-consent-banner-z-index-container: 101;
+
+        /* COLORS */
+        --cookie-consent-banner-colors-primary: #d07600;
+        --cookie-consent-banner-colors-primary-border: var(
+            --cookie-consent-banner-colors-primary
+        );
+        --cookie-consent-banner-colors-primary-content: #fff;
+        --cookie-consent-banner-colors-secondary: transparent;
+        --cookie-consent-banner-colors-secondary-border: #fff;
+        --cookie-consent-banner-colors-secondary-content: #fff;
+        --cookie-consent-banner-colors-background-body: rgba(25, 31, 34, 0.92);
+        --cookie-consent-banner-colors-text: #fff;
+
+        --cookie-consent-banner-border-radius-buttons: 100px;
+        --cookie-consent-banner-border-radius-body: 0;
+
+        --cookie-consent-banner-spacings-container-padding-top: 0;
+        --cookie-consent-banner-spacings-container-padding-left: 0;
+        --cookie-consent-banner-spacings-container-padding-bottom: 0;
+        --cookie-consent-banner-spacings-container-padding-right: 0;
+
+        /* FONTS */
+        --cookie-consent-banner-font-family-headline: inherit;
+        --cookie-consent-banner-font-size-headline: 1.5rem;
+        --cookie-consent-banner-font-family-body: inherit;
+        --cookie-consent-banner-font-size-body: 0.875rem;
+    }
+</style>
+
+<!-- Init Web Component -->
+<cookie-consent-banner
+    btn-label-accept-and-continue="Zustimmen und Weiter"
+    btn-label-only-essential-and-continue="Nur notwendige"
+    btn-label-persist-selection-and-continue="Save selection and continue"
+    btn-label-select-all-and-continue="Select all and continue"
+    content-settings-description="You can decide which cookies are used by selecting the respective options below. Please note that your selection may impair in the functionality of the service."
+>
+    Wir verwenden Cookies und ähnliche Technologien, um bestimmte Funktionen
+    bereitzustellen, das Benutzererlebnis zu verbessern und Inhalte zu liefern,
+    die für Ihre Interessen relevant sind. Je nach ihrem Zweck können neben
+    technisch notwendigen Cookies auch Analyse- und Marketing-Cookies verwendet
+    werden. Durch Klicken auf "Zustimmen und Weiter", erklären Sie Ihr
+    Einverständnis zur Verwendung der genannten Cookies.
+    <br />
+    <br />
+    <a
+        class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
+        onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
+        >Hier</a
+    >
+    können Sie detaillierte Einstellungen vornehmen oder Ihre Einwilligung (falls
+    erforderlich) für die Zukunft teilweise widerrufen. Weitere Informationen finden
+    Sie in unserer
+    <a
+        class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
+        href="/privacy-policy">Datenschutzerklärung</a
+    >
+</cookie-consent-banner>
+
+<script>
+    /* Update available Cookie Categories */
+    const cookieConsentBannerElement = document.querySelector(
+        "cookie-consent-banner"
+    );
+    cookieConsentBannerElement.availableCategories = [
+        {
+            description:
+                "Enable you to navigate and use the basic functions and to store preferences.",
+            key: "technically_required",
+            label: "Technically necessary cookies",
+            isMandatory: true,
+        },
+        {
+            description:
+                "Muss aktiviert werden, um das YouTube sehen zu können.",
+            key: "youtube",
+            label: "YouTube cookies",
+        },
+        {
+            description:
+                "Muss aktiviert werden, um den Instagram-Beitrag zu laden.",
+            key: "instagram",
+            label: "Instagram cookies",
+        },
+    ];
+    /*
+    
+        {
+            description:
+                "Wir verwenden Google Analytics um die Seitenaufrufe und Nutzererfahrung messen zu können.",
+            key: "analytics",
+            label: "Google Analytics cookies",
+        }, */
+</script>
+
+<script>
+    // =========================================================================
+    // EXAMPLE
+    // ANALYTICS w/o TAG MANAGER
+
+    import { youtube_video_url } from "@/constants/socials";
+
+    // =========================================================================
+    function loadAnalyticsScript() {
+        // Add Script only once
+        const scriptElementExists = document.querySelector(
+            "[data-scriptid='ga']"
+        );
+        if (scriptElementExists || window?.ga) return;
+
+        const firstScriptElement = document.getElementsByTagName("script")[0];
+
+        const scriptElement = document.createElement("script");
+        scriptElement.type = "text/javascript";
+        scriptElement.setAttribute("async", "true");
+        scriptElement.setAttribute(
+            "src",
+            "https://www.googletagmanager.com/gtag/js?id=G-BVMXQLGBWQ"
+        );
+        scriptElement.setAttribute("data-scriptid", "ga");
+
+        firstScriptElement.parentNode.insertBefore(
+            scriptElement,
+            firstScriptElement
+        );
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+
+        gtag("config", "G-BVMXQLGBWQ");
+    }
+
+    function loadYouTubeScript() {
+        const scriptElementExists = document.querySelector(
+            "[id=youtube-container]"
+        );
+        if (!scriptElementExists) return;
+
+        const iframeElement =
+            scriptElementExists.getElementsByTagName("iframe")[0];
+        iframeElement.setAttribute("src", youtube_video_url);
+
+        const skeleton = document.getElementById("youtube-skeleton");
+        skeleton?.classList.add("hidden");
+
+        iframeElement.classList.remove("hidden");
+    }
+
+    function loadInstagramScript() {
+        const scriptElementExists = document.querySelector(
+            "[id=instagram-container]"
+        );
+        if (!scriptElementExists) return;
+
+        const skeleton = document.getElementById("instagram-skeleton");
+        skeleton?.classList.add("hidden");
+
+        const firstBlockquoteElement =
+            document.getElementsByTagName("blockquote")[0];
+
+        const scriptElement = document.createElement("script");
+        scriptElement.type = "text/javascript";
+        scriptElement.setAttribute("async", "true");
+        scriptElement.setAttribute("src", "//www.instagram.com/embed.js");
+
+        firstBlockquoteElement?.insertAdjacentElement(
+            "afterend",
+            scriptElement
+        );
+    }
+
+    // =========================================================================
+    // COOKIE CONSENT: LOAD SCRIPTS AFTER USER INTERACTION
+    // =========================================================================
+    function loadScripts(event: any) {
+        const acceptedCategories = event?.detail?.acceptedCategories;
+
+        if (acceptedCategories?.includes("analytics")) {
+            console.log("Analytics accepted.");
+            //loadAnalyticsScript();
+        }
+        if (acceptedCategories?.includes("marketing")) {
+            console.log("Marketing accepted.");
+        }
+        if (acceptedCategories?.includes("youtube")) {
+            console.log("Youtube accepted.");
+            loadYouTubeScript();
+        }
+        if (acceptedCategories?.includes("instagram")) {
+            console.log("Instagram accepted.");
+            loadInstagramScript();
+        }
+    }
+
+    window.addEventListener("cookie_consent_preferences_restored", loadScripts);
+    window.addEventListener("cookie_consent_preferences_updated", loadScripts);
+</script>
