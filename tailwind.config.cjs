@@ -2,13 +2,17 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}','./node_modules/flowbite/**/*.js'],
     theme: {
         extend: {
             maxHeight: {
               '128': '36rem',
               'halfscreen': '50vh'
             },
+            height: {
+                '128': "36rem",
+                'halfscreen': '50vh'
+            }
         },
         container: {
             center: true,
@@ -58,20 +62,6 @@ module.exports = {
         }
     },
     plugins: [
-        require("daisyui")
-    ],
-    daisyui: {
-        styled: true,
-        base: true,
-        utils: true,
-        logs: false,
-        rtl: true,
-        prefix: "",
-        themes: [{
-            mytheme: {
-                primary: "#D07600",
-                secondary: "#2E2E2E",
-            },
-        }]
-      },
+		require('flowbite/plugin')
+	]
 }

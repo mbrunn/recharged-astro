@@ -1,45 +1,131 @@
 ---
 const images = await Astro.glob("/public/images/carousel/*.(png|jpg|jpeg)");
-import { Image } from '@astrojs/image/components';
+import { Image } from "@astrojs/image/components";
 
 function getLastImageID() {
   return images.length;
 }
 
 function getNextImageID(current: number) {
-  let nextID = current + 1
+  let nextID = current + 1;
   if (nextID >= getLastImageID()) {
     return 0;
-  }
-  else {
+  } else {
     return nextID;
   }
 }
 
 function getPreviousImageID(current: number) {
-  let prevID = current - 1
+  let prevID = current - 1;
   if (prevID < 0) {
     return getLastImageID() - 1;
-  }
-  else {
+  } else {
     return prevID;
   }
 }
-
 ---
 
 <div class="flex justify-items-center justify-center">
-  <div class="flex carousel w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128">
-
-    {images.map((image, index) => (
-      <div id={ index.toString() } class="carousel-item relative w-full justify-center overflow-visible">
-        <Image alt={ image.default } src={ image.default } class="object-contain"/>
-        <div class="absolute flex justify-between transform -translate-y-1/2 left-3 right-3 top-1/2">
-          <a href={ '#' + getPreviousImageID(index).toString() } class="btn btn-circle">❮</a> 
-          <a href={ '#' + getNextImageID(index).toString() } class="btn btn-circle">❯</a>
-        </div>
+  <div
+    class="relative overflow-auto w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128"
+  >
+    <div id="default-carousel" class="relative" data-carousel="static">
+      <!-- Carousel wrapper -->
+      <div class="relative h-56 overflow-hidden sm:h-128">
+        {
+          images.map((image, index) => (
+            <div
+              id={"carousel-item-" + index.toString()}
+              class="hidden w-full duration-700 ease-in-out"
+              data-carousel-item
+            >
+              <Image
+                alt={image.default}
+                src={image.default}
+                class="h-56 sm:h-128 object-contain"
+              />
+            </div>
+          ))
+        }
       </div>
-    ))}
-
+      <!-- Slider indicators -->
+      <div
+        class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"
+        data-active-classes="bg-red"
+        data-inactive-classes="bg-secondary"
+      >
+        {
+          images.map((image, index) => (
+            <button
+              id={"carousel-indicator-" + index.toString()}
+              type="button"
+              class="w-3 h-3 rounded-full indicators dark-indicator shadow-2xl"
+              aria-current="true"
+              aria-label={image.default}
+              data-carousel-slide-to={index.toString()}
+            />
+          ))
+        }
+      </div>
+      <!-- Slider controls -->
+      <button
+        type="button"
+        class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-prev
+      >
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-secondary/30 dark:bg-gray-800/30 group-hover:bg-secondary/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path></svg
+          >
+          <span class="sr-only">Previous</span>
+        </span>
+      </button>
+      <button
+        type="button"
+        class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+        data-carousel-next
+      >
+        <span
+          class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-secondary/30 dark:bg-gray-800/30 group-hover:bg-secondary/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+        >
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            ><path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path></svg
+          >
+          <span class="sr-only">Next</span>
+        </span>
+      </button>
+    </div>
   </div>
 </div>
+
+<style>
+  button.dark-indicator.bg-white {
+    background-color: #d07600;
+  }
+
+  button.dark-indicator.bg-white\/50 {
+    background-color: #575757;
+  }
+</style>

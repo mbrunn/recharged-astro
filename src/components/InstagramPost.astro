@@ -118,21 +118,24 @@
                     </div>
                 </div></a
             >
-            <div class="p-4 min-h-fit">
+            <div class="p-4 min-h-max">
                 <div >
-                    <p class="flex min-h-fit sm:text-lg">
+                    <p class="sm:text-lg">
                         Hier sollte eigentlich ein Instagram-Post von uns sein.
                         Aber leider musst du dafür erst der Speicherung von
                         Instagram-Cookies zustimmen.
                     </p>
                 </div>
-
-                <a
+                <div class="flex justify-center mt-2">
+                    <a
                     onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
-                    class="btn rounded-none bg-primary border-none text-white sm:text-xl my-2"
+                    type="button"
+                    class="rounded-none bg-primary border-none text-white sm:text-xl px-3 sm:px-5 py-2.5 box-shadow transition ease-in-out  duration-300"
                 >
                     Instagram-Cookies akzeptieren
                 </a>
+                </div>
+                
             </div>
             <p
                 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"

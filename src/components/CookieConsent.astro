@@ -25,7 +25,7 @@ import { youtube_video_url } from "@/constants/socials";
         --cookie-consent-banner-colors-text: #fff;
 
         --cookie-consent-banner-border-radius-buttons: 0;
-        --cookie-consent-banner-border-radius-body: 2;
+        --cookie-consent-banner-border-radius-body: 0;
 
         --cookie-consent-banner-spacings-container-padding-top: 0;
         --cookie-consent-banner-spacings-container-padding-left: 0;
@@ -48,26 +48,30 @@ import { youtube_video_url } from "@/constants/socials";
     btn-label-select-all-and-continue="Select all and continue"
     content-settings-description="Sie können entscheiden, welche Cookies verwendet werden, indem Sie unten die entsprechenden Optionen auswählen. Bitte beachten Sie, dass Ihre Auswahl die Funktionalität der Website beeinträchtigen kann."
 >
-    Wir verwenden Cookies und ähnliche Technologien, um bestimmte Funktionen
-    bereitzustellen, das Benutzererlebnis zu verbessern und Inhalte zu liefern,
-    die für Ihre Interessen relevant sind. Je nach ihrem Zweck können neben
-    technisch notwendigen Cookies auch Analyse- und Marketing-Cookies verwendet
-    werden. Durch Klicken auf "Zustimmen und Weiter", erklären Sie Ihr
-    Einverständnis zur Verwendung der genannten Cookies.
-    <br />
-    <br />
-    <a
-        class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
-        onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
-        >Hier</a
-    >
-    können Sie detaillierte Einstellungen vornehmen oder Ihre Einwilligung (falls
-    erforderlich) für die Zukunft teilweise widerrufen. Weitere Informationen finden
-    Sie in unserer
-    <a
-        class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
-        href="/privacy-policy">Datenschutzerklärung</a
-    >
+    <p>
+        Wir verwenden Cookies und ähnliche Technologien, um bestimmte Funktionen
+        bereitzustellen, das Benutzererlebnis zu verbessern und Inhalte zu
+        liefern, die für Ihre Interessen relevant sind. Je nach ihrem Zweck
+        können neben technisch notwendigen Cookies auch Analyse- und
+        Marketing-Cookies verwendet werden. Durch Klicken auf "Zustimmen und
+        Weiter", erklären Sie Ihr Einverständnis zur Verwendung der genannten
+        Cookies.
+
+        <br />
+        <br />
+        <a
+            class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
+            onclick="document.dispatchEvent(new Event('cookie_consent_details_show'))"
+            >Hier</a
+        >
+        können Sie detaillierte Einstellungen vornehmen oder Ihre Einwilligung (falls
+        erforderlich) für die Zukunft teilweise widerrufen. Weitere Informationen
+        finden Sie in unserer
+        <a
+            class="font-bold cursor-pointer underline underline-offset-1 decoration-2"
+            href="/privacy-policy">Datenschutzerklärung</a
+        >
+    </p>
 </cookie-consent-banner>
 
 <script>
@@ -211,3 +215,4 @@ import { youtube_video_url } from "@/constants/socials";
     window.addEventListener("cookie_consent_preferences_restored", loadScripts);
     window.addEventListener("cookie_consent_preferences_updated", loadScripts);
 </script>
+
