@@ -8,61 +8,86 @@ import InstagramPost from "@components/InstagramPost.astro";
 import ImageCarousel from "@components/ImageCarousel.astro";
 import BookNowButton from "@components/BookNowButton.astro";
 import PersonGallery from "@components/PersonGallery.astro";
+import SocialsSmall from "@components/SocialsSmall.astro";
 ---
 
 <Layout title="Recharged">
   <main>
-    <div class="flex justify-center content-center bg-cover bg-[url('/images/background.jpg')] sm:max-h-128 w-full">
-      <img src="/images/title_pic.png" class="object-center object-scale-down" alt="Title picture. Four musicians."/>
+    <div
+      class="flex justify-center content-center bg-cover bg-[url('/images/background.jpg')] sm:max-h-128 w-full"
+    >
+      <img
+        src="/images/title_pic.png"
+        class="object-center object-scale-down"
+        alt="Title picture. Four musicians."
+      />
     </div>
 
-    <div id="hearing" class="home-card bg-secondary text-white py-3">
+    <div id="Recharged-Header" class="home-card bg-secondary text-white py-3">
+      <Card title="">
+        <div
+          class="flex flex-row items-center justify-center mx-auto w-full sm:max-w-3xl object-contain"
+        >
+          <img
+            src="/images/Logo_trans_white_small.png"
+            class="h-11 sm:h-24"
+            alt="Recharged Logo"
+          />
+          <img
+            src="/images/Schriftzug_trans_white.png"
+            class="h-14 sm:h-28"
+            alt="Recharged Schriftzug"
+          />
+        </div>
+
+        <p class="text-lg sm:text-2xl my-4">
+          Alternative-Rock aus Niederösterreich.
+        </p>
+        <SocialsSmall />
+      </Card>
+    </div>
+
+    <Transition bottomColor="white" topColor="#2e2e2e" />
+
+    <div id="hearing" class="home-card bg-white text-secondary py-3">
       <Card title="Hörprobe">
-        <YouTubePreview>
-          
-        </YouTubePreview>
+        <YouTubePreview />
       </Card>
     </div>
 
-    <Transition bottomColor="white" topColor="#2e2e2e"/>
-
-    <div class="home-card bg-white text-secondary py-3">
-      <Card title="Instagram">
-        <InstagramPost>
-          
-        </InstagramPost>
-      </Card>
-    </div>
-
-    <Transition bottomColor="#2e2e2e" topColor="white"/>
+    <Transition bottomColor="#2e2e2e" topColor="white" />
 
     <div class="home-card bg-secondary text-white py-3">
+      <Card title="Instagram">
+        <InstagramPost />
+      </Card>
+    </div>
+
+    <Transition bottomColor="white" topColor="#2e2e2e" />
+
+    <div class="home-card bg-white text-secondary py-3">
       <Card title="Bilder">
         <ImageCarousel />
       </Card>
     </div>
 
-    <Transition bottomColor="white" topColor="#2e2e2e"/>
+    <Transition bottomColor="#2e2e2e" topColor="white" />
 
-    <div id="dates" class="home-card bg-white text-secondary py-3">
+    <div id="dates" class="home-card bg-secondary text-white py-3">
       <Card title="Auftritte">
-        <Dates>
-          
-        </Dates>
+        <Dates />
       </Card>
     </div>
 
-    <Transition bottomColor="#2e2e2e" topColor="white"/>
+    <Transition bottomColor="white" topColor="#2e2e2e" />
 
-    <div class="home-card bg-secondary text-white py-3">
+    <div class="home-card bg-white text-secondary py-3">
       <Card title="Die Band">
         <PersonGallery />
       </Card>
     </div>
 
-    <div class="home-card bg-secondary text-white py-3">
-      <!--<ImageCarousel path="/images/carousel" />-->
-    </div>
+    <Transition bottomColor="#2e2e2e" topColor="white" />
 
     <div class="home-card bg-secondary text-white py-3">
       <div class="flex flex-col justify-center gap-2">
@@ -82,7 +107,8 @@ import PersonGallery from "@components/PersonGallery.astro";
     width: 100%;
   }
 
-  h2, button {
+  h2,
+  button {
     font-family: Iceberg;
     letter-spacing: 0.17em;
   }
