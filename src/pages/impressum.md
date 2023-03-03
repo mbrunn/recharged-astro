@@ -5,11 +5,7 @@ author: Michael
 description: Unser Impressum
 ---
 **Recharged**
-
-Michael Brunner<br>
-Wiesengrund 9<br>
-2130 Lanzendorf<br>
-Österreich<br>
+office@recharged.at
 
 &nbsp;<br>
 &nbsp;<br>
