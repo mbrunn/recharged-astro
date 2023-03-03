@@ -1,34 +1,47 @@
 ---
 //const dates:Array<string> = ["Hello", "There", "General", "Kenobi"]
 
+import { contentfulClient } from "../lib/contentful";
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import type { Document } from "@contentful/rich-text-types";
+
 interface Gig {
-    day: string;
     name: string;
-    city: string;
-    link?: string;
+    date: Date;
+    location: string;
+    link: URL;
 }
 
-import json from '../pages/dates/dates.json';
+const entries = await contentfulClient.getEntries<Gig>({
+  content_type: "gigDate",
+});
+console.log(entries);
 
-const dates = await Astro.glob('../pages/dates/dates.json');
-let datesJson = json as Array<Gig>;
+const dates = entries.items.map((item) => {
+  const { name, date, location, link } = item.fields;
+  return {
+    name,
+    location,
+    link,
+    date: new Date(date).toLocaleDateString()
+  };
+});
 
 ---
-
 <div class="flex justify-center">
     <ul class="flex flex-col justify-around p-4 w-full sm:max-w-5xl">
-        { datesJson.map((date, index) => (
-            index + 1 === datesJson.length ? 
+        { dates.map((date, index) => (
+            index + 1 === dates.length ? 
                 <a href={ date.link } target="_blank" rel="noopener noreferrer">
                     <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                         <p class="min-w-min">
-                            { date.day }
+                            { date.date }
                         </p>
                         <p class="sm:w-1/3 w-1/4"> 
                             { date.name }
                         </p>
                         <p class="sm:w-1/3 w-1/4">
-                            { date.city }
+                            { date.location }
                         </p>
                     </li>
                 </a>
@@ -37,13 +50,13 @@ let datesJson = json as Array<Gig>;
                 <a href={ date.link } target="_blank" rel="noopener noreferrer">
                     <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                         <p class="min-w-min">
-                            { date.day }
+                            { date.date }
                         </p>
                         <p class="sm:w-1/3 w-1/4"> 
                             { date.name }
                         </p>
                         <p class="sm:w-1/3 w-1/4">
-                            { date.city }
+                            { date.location }
                         </p>
                     </li>
                 </a>
