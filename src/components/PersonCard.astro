@@ -1,22 +1,43 @@
 ---
 import { AstroComponentInstance } from "astro/dist/runtime/server";
+import type { Person } from "./PersonGallery.astro";
 
-export interface Person {
-    name: string;
-    imageSrc: string;
-    position: string;
-}
-
-const { name, imageSrc, position } = Astro.props as Person;
+const { name, image, position, quote } = Astro.props as Person;
 ---
 
-<div class="flex flex-col w-full h-auto bg-secondary text-white transition ease-in-out hover:scale-105 duration-300">
-    <img src={ imageSrc } />
-    <div class="flex flex-col gap-2.5 items-center justify-center p-3 h-full">
-        <h1 class="sm:text-2xl text-lg">{ name }</h1>
-        <h2 class="sm:text-xl text-md">{ position }</h2>
+<label
+    for={"modal-" + name}
+    class="flex flex-col w-full h-auto bg-secondary text-white transition ease-in-out hover:scale-105 duration-300"
+>
+    <img src={image.fields.file.url} class="object-cover object-center sm:h-5/6 "/>
+    <div class="flex flex-col gap-2 items-center justify-center p-3 sm:h-1/6">
+        <h1 class="sm:text-2xl text-lg">{name}</h1>
+        <h2 class="sm:text-xl text-md">{position}</h2>
     </div>
-</div>
+</label>
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id={"modal-" + name} class="modal-toggle" />
+<label for={"modal-" + name} class="modal cursor-pointer">
+    <label class="modal-box relative h-auto rounded-lg shadow-lg" for="">
+        <div class="">
+            <div class="flex flex-col lg:flex-row items-center">
+                <img
+                    src={image.fields.file.url}
+                    class="flex object-contain w-3/5 m-2 rounded-lg shadow-lg"
+                />
+                <div class="w-full">
+                    <h1 class="sm:text-3xl text-xl">{name}</h1>
+                    <h2 class="sm:text-2xl text-lg">{position}</h2>
+                    <hr
+                        class="border-1 sm:border-2 border-secondary mx-6 my-3"
+                    />
+                    <p class="text-center">{quote}</p>
+                </div>
+            </div>
+        </div>
+    </label>
+</label>
 
 <style>
     h2 {
