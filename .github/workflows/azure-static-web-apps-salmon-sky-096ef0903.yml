@@ -21,7 +21,7 @@ jobs:
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1.3.0
         with:
-          envkey_CONTENTFUL_SPACE_ID: ${{ env.CONTENTFUL_SPACE_ID }}
+          envkey_CONTENTFUL_SPACE_ID: ${{ vars.CONTENTFUL_SPACE_ID }}
           envkey_CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
       - name: Build And Deploy
         id: builddeploy
@@ -30,7 +30,7 @@ jobs:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_SALMON_SKY_096EF0903 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
-          CONTENTFUL_SPACE_ID: ${{ env.CONTENTFUL_SPACE_ID }}
+          CONTENTFUL_SPACE_ID: ${{ vars.CONTENTFUL_SPACE_ID }}
           
           action: "upload"
           ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
