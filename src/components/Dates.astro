@@ -11,62 +11,74 @@ interface Gig {
 }
 
 const entries = await contentfulClient.getEntries<Gig>({
-  content_type: "gigDate",
+    content_type: "gigDate",
 });
 
 const gigs = entries.items.map((item) => {
-  const { name, date, location, link } = item.fields;
-  return {
-    name,
-    location,
-    link,
-    date: new Date(date)
-  };
+    const { name, date, location, link } = item.fields;
+    return {
+        name,
+        location,
+        link,
+        date: new Date(date),
+    };
 });
 
-const sortedGigs = gigs.sort((a,b) => a.date - b.date);
+const sortedGigs = gigs.sort((a, b) => a.date - b.date);
 ---
+
 <div class="flex justify-center">
     <ul class="flex flex-col justify-around p-4 w-full sm:max-w-6xl">
-        { sortedGigs.map((gig, index) => (
-            index + 1 === sortedGigs.length ? 
-                <a href={ gig.link } target="_blank" rel="noopener noreferrer">
-                    <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
-                        <p class="sm:w-1/5 min-w-min">
-                            { gig.date.toLocaleDateString() }
-                            { /*gig.date.toLocaleTimeString('de-AT', {
+        {
+            sortedGigs.map((gig, index) =>
+                index + 1 === sortedGigs.length ? (
+                    <a
+                        href={gig.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                            <p class="sm:w-1/5 min-w-min">
+                                {gig.date.toLocaleDateString("de-AT", {
+                                        day: "2-digit",
+                                        month: "2-digit",
+                                        year: "numeric"
+                                    })}
+                                {/*gig.date.toLocaleTimeString('de-AT', {
                                 hour: "2-digit",
                                 minute: "2-digit"
                             }) */}
-                        </p>
-                        <p class="sm:w-1/3 w-1/4"> 
-                            { gig.name }
-                        </p>
-                        <p class="sm:w-1/2 w-1/4">
-                            { gig.location }
-                        </p>
-                    </li>
-                </a>
-                :
-                <a href={ gig.link } target="_blank" rel="noopener noreferrer">
-                    <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
-                        <p class="sm:w-1/5 min-w-min">
-                            { gig.date.toLocaleDateString() }
-                            { /*gig.date.toLocaleTimeString('de-AT', {
+                            </p>
+                            <p class="sm:w-1/3 w-1/4">{gig.name}</p>
+                            <p class="sm:w-1/2 w-1/4">{gig.location}</p>
+                        </li>
+                    </a>
+                ) : (
+                    <>
+                        <a
+                            href={gig.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                                <p class="sm:w-1/5 min-w-min">
+                                    {gig.date.toLocaleDateString("de-AT", {
+                                        day: "2-digit",
+                                        month: "2-digit",
+                                        year: "numeric"
+                                    })}
+                                    {/*gig.date.toLocaleTimeString('de-AT', {
                                 hour: "2-digit",
                                 minute: "2-digit"
                             }) */}
-                        </p>
-                        <p class="sm:w-1/3 w-1/4"> 
-                            { gig.name }
-                        </p>
-                        <p class="sm:w-1/2 w-1/4">
-                            { gig.location }
-                        </p>
-                    </li>
-                </a>
-                <hr class="border-1 sm:border-2 border-white"/>
-        )
+                                </p>
+                                <p class="sm:w-1/3 w-1/4">{gig.name}</p>
+                                <p class="sm:w-1/2 w-1/4">{gig.location}</p>
+                            </li>
+                        </a>
+                        <hr class="border-1 sm:border-2 border-white" />
+                    </>
+                )
             )
         }
     </ul>
@@ -78,7 +90,7 @@ const sortedGigs = gigs.sort((a,b) => a.date - b.date);
     }
 
     p {
-        display:inline;
-        word-break: break-word;;
+        display: inline;
+        word-break: break-word;
     }
 </style>
