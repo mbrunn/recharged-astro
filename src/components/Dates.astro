@@ -13,7 +13,6 @@ interface Gig {
 const entries = await contentfulClient.getEntries<Gig>({
   content_type: "gigDate",
 });
-console.log(entries);
 
 const gigs = entries.items.map((item) => {
   const { name, date, location, link } = item.fields;
@@ -26,7 +25,6 @@ const gigs = entries.items.map((item) => {
 });
 
 const sortedGigs = gigs.sort((a,b) => a.date - b.date);
-console.log(sortedGigs);
 ---
 <div class="flex justify-center">
     <ul class="flex flex-col justify-around p-4 w-full sm:max-w-6xl">
