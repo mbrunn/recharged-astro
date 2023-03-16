@@ -4,101 +4,111 @@ import { Image } from "@astrojs/image/components";
 ---
 
 <script>
-  function getLastImageID() {
-    return images.length;
-  }
+  // core version + navigation, pagination modules:
+  import Swiper, { Navigation, Pagination } from "swiper";
+  // import Swiper and modules styles
+  import "swiper/css";
+  import "swiper/css/navigation";
+  import "swiper/css/pagination";
 
-  function getNextImageID(current: number) {
-    let nextID = current + 1;
-    if (nextID >= getLastImageID()) {
-      return 0;
-    } else {
-      return nextID;
-    }
-  }
+  let swiper = new Swiper(".mySwiper", {
+    modules: [Navigation, Pagination],
 
-  function getPreviousImageID(current: number) {
-    let prevID = current - 1;
-    if (prevID < 0) {
-      return getLastImageID() - 1;
-    } else {
-      return prevID;
-    }
-  }
+    keyboard: {
+      enabled: true,
+    },
 
-  const previousButtons = document.querySelectorAll("button[id^=previous-]");
-  const nextButtons = document.querySelectorAll("button[id^=next-]");
-  const images = document.querySelectorAll("img[id^=carousel-item-");
-  const carouselIndicators = document.querySelectorAll("button[id^=carousel-indicator-]")
+    loop: true,
+    // If we need pagination
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
 
-  previousButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      let oldScrollPosition = window.scrollY;
-      window.location.hash = "#" + getPreviousImageID(index);
-      window.scrollTo(0, oldScrollPosition);
-    });
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    grabCursor: true,
   });
-
-  nextButtons.forEach((button, index) => {
-    button.addEventListener("click", () => {
-      let oldScrollPosition = window.scrollY;
-      window.location.hash = "#" + getNextImageID(index);
-      window.scrollTo(0, oldScrollPosition);
-    });
-  });
-
-  carouselIndicators.forEach((carouselIndicator, index) => {
-    carouselIndicator.addEventListener("click", () => {
-      let oldScrollPosition = window.scrollY;
-      window.location.hash = "#" + carouselIndicator.getAttribute("image_id");
-      window.scrollTo(0, oldScrollPosition);
-    });
-  })
 </script>
 
+<style>
+  div.swiper-button-prev,
+  div.swiper-button-next {
+    color: var(--bg-secondary);
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #f00 !important;
+  }
+</style>
+
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
+/>
 <div class="flex justify-items-center justify-center">
-  <div class="flex carousel w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128">
-    {
-      images.map((image, index) => (
-        <div
-          id={index.toString()}
-          class="carousel-item relative w-full justify-center overflow-visible"
-        >
-          <Image
-            alt={image.default}
-            src={image.default}
-            id={"carousel-item-" + index}
-            class="object-contain"
-          />
-          <div class="hidden sm:flex absolute  justify-between transform -translate-y-1/2 left-3 right-3 top-1/2">
-            <button id={"previous-" + index} class="btn btn-circle">
-              ❮
-            </button>
-            <button id={"next-" + index} class="btn btn-circle">
-              ❯
-            </button>
+  <div
+    class="swiper mySwiper flex w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128"
+    style="--swiper-pagination-color: #d07600; --swiper-pagination-bullet-inactive-color: #ffffff; --swiper-pagination-bullet-size: 12px"
+  >
+    <div class="swiper-wrapper">
+      {
+        images.map((image, index) => (
+          <div
+            class={
+              "swiper-slide w-full justify-center" +
+              " slide_" +
+              index.toString()
+            }
+          >
+              <Image
+                alt={image.default}
+                src={image.default}
+                id={"carousel-item-" + index}
+                class="object-contain h-full"
+              />
           </div>
-          <div class="flex absolute z-30 h-3 space-x-3 -translate-x-1/2 bottom-1 sm:bottom-4 left-1/2 flex-nowrap">
-            {images.map((image, inner_index) =>
-              index == inner_index ? (
-                <button
-                  id={"carousel-indicator-" + inner_index.toString()}
-                  class="h-3 w-3 rounded-full bg-primary drop-shadow-md"
-                  aria-label={image.default}
-                  image_id={inner_index}
-                />
-              ) : (
-                <button
-                  id={"carousel-indicator-" + inner_index.toString()}
-                  class="h-3 w-3 rounded-full bg-secondary drop-shadow-md"
-                  aria-label={image.default}
-                  image_id={inner_index}
-                />
-              )
-            )}
-          </div>
-        </div>
-      ))
-    }
+        ))
+      }
+    </div>
+
+    <div
+      class="swiper-pagination"
+      style=""
+    >
+    </div>
+
+    <div class="swiper-button-prev swiper-button-white"></div>
+    <div class="swiper-button-next swiper-button-white"></div>
   </div>
 </div>
+
+<!--
+<div class="flex justify-items-center justify-center">
+  <section
+    class="splide flex w-full max-h-halfscreen sm:max-w-4xl sm:max-h-128"
+    aria-label="Splide Image Carousel"
+  >
+    <div class="splide__track">
+      <ul class="splide__list">
+        {
+          images.map((image, index) => (
+            <li class="splide__slide justify-center flex p-5">
+              <Image
+                alt={image.default}
+                src={image.default}
+                id={"carousel-item-" + index}
+                class="pb-2"
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</div>
+ -->
