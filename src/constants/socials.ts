@@ -2,7 +2,7 @@ export const instagram_url = "https://www.instagram.com/recharged.at/"
 
 export const youtube_url = "https://www.youtube.com/@RECHARGED_BAND"
 
-export const youtube_video_url = "https://www.youtube-nocookie.com/embed/e8gmToIEkfI"
+export const youtube_video_url = "https://www.youtube.com/embed/Xre8hTiwZV4?si=Md26qmy1Oc4OoceM"
 
 export const applemusic_url = "https://music.apple.com/de/artist/recharged/1667653995"
 
