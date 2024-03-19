@@ -55,6 +55,7 @@ module.exports = {
         },
         fontFamily: {
             serif: ['RotisSemiSerif', 'serif'],
+            iceberg: ["Iceberg", 'ui-sans-serif', 'system-ui']
         }
     },
     plugins: [

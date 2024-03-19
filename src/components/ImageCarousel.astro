@@ -1,17 +1,18 @@
 ---
 const images = await Astro.glob("/public/images/carousel/*.(png|jpg|jpeg)");
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets'
 ---
 
 <script>
   // core version + navigation, pagination modules:
-  import Swiper, { Navigation, Pagination } from "swiper";
+  import Swiper from "swiper";
+  import { Navigation, Pagination } from 'swiper/modules';
   // import Swiper and modules styles
   import "swiper/css";
   import "swiper/css/navigation";
   import "swiper/css/pagination";
 
-  let swiper = new Swiper(".mySwiper", {
+  const swiper = new Swiper(".mySwiper", {
     modules: [Navigation, Pagination],
 
     keyboard: {

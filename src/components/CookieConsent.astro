@@ -5,7 +5,7 @@ import { youtube_video_url } from "@/constants/socials";
 <!-- Import Web Component -->
 <script
     type="module"
-    src="https://unpkg.com/@porscheofficial/cookie-consent-banner@2.1.0/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
+    src="https://unpkg.com/@porscheofficial/cookie-consent-banner@4.0.2/dist/cookie-consent-banner/cookie-consent-banner.esm.js"
 ></script>
 
 <style>
@@ -37,6 +37,32 @@ import { youtube_video_url } from "@/constants/socials";
         --cookie-consent-banner-font-size-headline: 1.5rem;
         --cookie-consent-banner-font-family-body: inherit;
         --cookie-consent-banner-font-size-body: 0.875rem;
+    }
+
+    cookie-consent-banner::part(primary-button) {
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    cookie-consent-banner::part(description-main) {
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    cookie-consent-banner::part(description),
+    cookie-consent-banner::part(headline) {
+        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    }
+
+    cookie-consent-banner::part(primary-button) {
+        text-transform: uppercase;
+    }
+
+    cookie-consent-banner::part(secondary-button) {
+        text-transform: uppercase;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    }
+
+    cookie-consent-banner::part(checkbox) {
+        accent-color: #d07600;
     }
 </style>
 

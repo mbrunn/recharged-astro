@@ -37,7 +37,7 @@ const sortedGigs = gigs.sort((a, b) => a.date - b.date);
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                        <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-sm sm:text-2xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                             <p class="sm:w-1/5 min-w-min">
                                 {gig.date.toLocaleDateString("de-AT", {
                                         day: "2-digit",
@@ -60,7 +60,7 @@ const sortedGigs = gigs.sort((a, b) => a.date - b.date);
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-md sm:text-3xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
+                            <li class="flex flex-row gap-1 sm:gap-10 justify-around py-2 sm:py-4 sm:px-4 px-1 inline-block text-sm sm:text-2xl justify-center items-center transition ease-in-out hover:scale-105 duration-300">
                                 <p class="sm:w-1/5 min-w-min">
                                     {gig.date.toLocaleDateString("de-AT", {
                                         day: "2-digit",
@@ -85,10 +85,6 @@ const sortedGigs = gigs.sort((a, b) => a.date - b.date);
 </div>
 
 <style>
-    li {
-        font-family: Iceberg;
-    }
-
     p {
         display: inline;
         word-break: break-word;

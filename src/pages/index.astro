@@ -9,6 +9,8 @@ import ImageCarousel from "@components/ImageCarousel.astro";
 import BookNowButton from "@components/BookNowButton.astro";
 import PersonGallery from "@components/PersonGallery.astro";
 import SocialsSmall from "@components/SocialsSmall.astro";
+import { Image } from "astro:assets";
+import titlePic from "../../public/images/title_pic.png";
 ---
 
 <Layout title="Recharged">
@@ -16,9 +18,8 @@ import SocialsSmall from "@components/SocialsSmall.astro";
     <div
       class="flex justify-center content-center bg-cover bg-[url('/images/background.jpg')] sm:max-h-128 w-full"
     >
-      <img
-        src="/images/title_pic.png"
-        class="object-center object-scale-down"
+      <Image
+        src={titlePic}
         alt="Title picture. Four musicians."
       />
     </div>
@@ -49,7 +50,7 @@ import SocialsSmall from "@components/SocialsSmall.astro";
 
     <Transition bottomColor="white" topColor="#2e2e2e" />
 
-    <div id="hearing" class="home-card bg-white text-secondary py-3">
+    <div id="sample" class="home-card bg-white text-secondary py-3">
       <Card title="Hörprobe">
         <YouTubePreview />
       </Card>
@@ -109,7 +110,6 @@ import SocialsSmall from "@components/SocialsSmall.astro";
 
   h2,
   button {
-    font-family: Iceberg;
     letter-spacing: 0.17em;
   }
 </style>

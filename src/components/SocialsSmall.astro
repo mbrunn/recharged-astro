@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon'
+import { Icon } from 'astro-icon/components'
 import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url, email_address} from '../constants/socials'
 ---
 
@@ -8,32 +8,32 @@ import { instagram_url,  youtube_url, applemusic_url, spotify_url, facebook_url,
   <ul class="grid gap-4 grid-rows-1 grid-flow-col items-center w-full px-8 py-2 sm:max-w-md h-auto">
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ instagram_url }>
-        <Icon name="mdi:instagram"></Icon>
+        <Icon name="mdi:instagram" class="size-full"></Icon>
       </a>
     </li>
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ youtube_url }>
-        <Icon name="mdi:youtube"></Icon>
+        <Icon name="mdi:youtube" class="size-full"></Icon>
       </a>
     </li>
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ applemusic_url }>
-        <Icon viewBox="-3 -3 38 38" name="cib:apple-music"></Icon>
+        <Icon viewBox="-3 -3 38 38" name="cib:apple-music" class="size-full"></Icon>
       </a>
     </li>
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ spotify_url }>
-        <Icon name="mdi:spotify"></Icon>
+        <Icon name="mdi:spotify" class="size-full"></Icon>
       </a>
     </li>
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ facebook_url }>
-        <Icon name="mdi:facebook"></Icon>
+        <Icon name="mdi:facebook" class="size-full"></Icon>
       </a>
     </li>
     <li class="transition ease-in-out hover:scale-110 duration-200">
       <a href={ "mailto:" + email_address }>
-        <Icon name="mdi:email"></Icon>
+        <Icon name="mdi:email" class="size-full"></Icon>
       </a>
     </li>
   </ul>

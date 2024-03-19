@@ -3,15 +3,15 @@ import Socials from "./Socials.astro";
 import { email_address } from '../constants/socials';
 ---
 
-<footer class="bg-secondary text-white w-full p-2">
-  <div class="container sm:w-1/2 h-auto text-center">
+<footer class="bg-secondary text-white w-full p-2 ">
+  <div class="container sm:w-1/2 h-auto text-center font-sans">
     <Socials/>
     <p class="hidden sm:block">
-      Recharged | 2023 | <a href={ "mailto:" + email_address }>{email_address}</a>
+      Recharged | 2024 | <a href={ "mailto:" + email_address }>{email_address}</a>
     </p>
 
     <p class="block sm:hidden">
-      Recharged | 2023 
+      Recharged | 2024 
       <p class="break-words text-xl py-2 block sm:hidden">
         <a class="block sm:hidden" href={ "mailto:" + email_address }>{email_address}</a>
       </p>
@@ -42,8 +42,6 @@ import { email_address } from '../constants/socials';
 
 <style>
   footer {
-    font-family: "Iceberg";
-    font-size: x-large;
     letter-spacing: 0.17em;
   }
 </style>

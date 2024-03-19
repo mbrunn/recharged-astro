@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import { applemusic_url, spotify_url, youtube_url } from "../constants/socials";
 ---
 
@@ -24,8 +24,8 @@ import { applemusic_url, spotify_url, youtube_url } from "../constants/socials";
                 class="flex flex-col sm:text-lg p-4 gap-2 justify-center content-center items-center text-black"
             >
                 <a class="flex flex-col content-center justify-center items-center" href={ youtube_url }>
-                    <Icon class="h-12 w-12" name="mdi:youtube"></Icon>
-                    <p style=" color:#d07600; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
+                    <Icon class="h-12 w-12" name="mdi:youtube" class="size-full"></Icon>
+                    <p style=" color:#d07600; font-family:sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
                         Sieh dir dieses Video auf YouTube an
                     </p>
                 </a>
@@ -47,14 +47,14 @@ import { applemusic_url, spotify_url, youtube_url } from "../constants/socials";
             </p>
             <a href={applemusic_url}>
                 <Icon
-                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200"
+                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200 size-full"
                     viewBox="-3 -3 38 38"
                     name="cib:apple-music"
                 />
             </a>
             <a href={spotify_url}>
                 <Icon
-                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200"
+                    class="w-8 sm:w-14 transition ease-in-out hover:scale-110 duration-200 size-full "
                     name="mdi:spotify"
                 />
             </a>
