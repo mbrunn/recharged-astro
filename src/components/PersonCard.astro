@@ -7,39 +7,73 @@ export interface Person {
 }
 
 const { name, imageSrc, position, bio } = Astro.props as Person;
+const cardId = name
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, "-")
+  .replace(/(^-|-$)/g, "") || `person-card-${Math.random().toString(36).slice(2, 8)}`;
 ---
 
-<div class="group relative overflow-hidden rounded-3xl border border-white/10 bg-secondary text-white shadow-lg shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl">
-  <img
-    src={imageSrc}
-    alt={`Portrait of ${name}`}
-    class="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
-  />
+<div class="scene w-full max-w-sm">
+  <input type="checkbox" id={cardId} class="peer hidden" />
+  <label for={cardId} class="card group cursor-pointer block h-full w-full">
+    <div class="card-inner relative h-full w-full rounded-3xl border border-white/10 bg-secondary text-white shadow-lg shadow-black/20 transition-transform duration-700 ease-in-out peer-checked:rotate-y-180">
+      <div class="card-face card-front absolute inset-0 overflow-hidden rounded-3xl bg-secondary text-white">
+        <img
+          src={imageSrc}
+          alt={`Portrait of ${name}`}
+          class="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/0"></div>
+        <div class="relative flex h-full flex-col justify-end p-5 text-center">
+          <div class="rounded-3xl bg-black/50 p-4 backdrop-blur-md transition-transform duration-300 group-hover:-translate-y-2">
+            <h1 class="text-xl font-semibold tracking-tight">{name}</h1>
+            <h2 class="mt-1 text-sm uppercase tracking-[0.25em] text-orange-300">{position}</h2>
+            <p class="mt-3 text-sm leading-6 text-slate-200 opacity-90">
+              Klicke auf die Karte, um mehr über diese Person zu erfahren.
+            </p>
+          </div>
+        </div>
+      </div>
 
-  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/0 opacity-90 transition-opacity duration-300 group-hover:opacity-100"></div>
-
-  <div class="relative flex h-full flex-col justify-end p-5 text-center">
-    <div class="rounded-3xl bg-black/50 p-4 backdrop-blur-md transition-transform duration-300 group-hover:-translate-y-2">
-      <h1 class="text-xl font-semibold tracking-tight">{name}</h1>
-      <h2 class="mt-1 text-sm uppercase tracking-[0.25em] text-orange-300">{position}</h2>
-      {bio ? (
-        <p class="mt-3 text-sm leading-6 text-slate-200 opacity-90 line-clamp-4">
-          {bio}
-        </p>
-      ) : (
-        <p class="mt-3 text-sm leading-6 text-slate-200 opacity-90">
-          Teammitglied der Band mit Leidenschaft für Musik und Auftritte.
-        </p>
-      )}
+      <div class="card-face card-back absolute inset-0 rotate-y-180 overflow-hidden rounded-3xl bg-[#0f172a] text-white">
+        <div class="flex h-full flex-col justify-between p-6 text-left">
+          <div>
+            <h1 class="text-xl font-semibold tracking-tight">{name}</h1>
+            <h2 class="mt-1 text-sm uppercase tracking-[0.25em] text-orange-300">{position}</h2>
+            <p class="mt-4 text-sm leading-7 text-slate-200">
+              {bio ? bio : "Teammitglied der Band mit Leidenschaft für Musik und Auftritte."}
+            </p>
+          </div>
+          <div class="mt-6 rounded-3xl bg-white/5 p-4 text-sm text-slate-300 backdrop-blur-md">
+            <p class="font-semibold text-slate-100">Tipp</p>
+            <p>Klicke erneut, um zurück zur Vorderseite zu gelangen.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </label>
 </div>
 
 <style>
-  .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+  .scene {
+    perspective: 1200px;
+  }
+
+  .card-inner {
+    transform-style: preserve-3d;
+    min-height: 24rem;
+  }
+
+  .card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .card-front {
+    transform: rotateY(0deg);
+  }
+
+  .card-back {
+    transform: rotateY(180deg);
   }
 </style>
