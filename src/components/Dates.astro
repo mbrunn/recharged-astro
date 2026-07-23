@@ -1,30 +1,49 @@
 ---
 //const gigs:Array<string> = ["Hello", "There", "General", "Kenobi"]
 
-import { contentfulClient } from "../lib/contentful";
+import { contentfulClient, hasContentfulConfig } from "../lib/contentful";
 
 interface Gig {
-    name: string;
-    date: Date;
-    location: string;
-    link: URL;
+  name: string;
+  date: Date;
+  location: string;
+  link: string | URL;
 }
 
-const entries = await contentfulClient.getEntries<Gig>({
-    content_type: "gigDate",
-});
+const defaultGigs = [
+  {
+    name: "Live Open Air",
+    date: new Date(),
+    location: "TBA",
+    link: "/#",
+  },
+];
 
-const gigs = entries.items.map((item) => {
-    const { name, date, location, link } = item.fields;
-    return {
-        name,
-        location,
-        link,
-        date: new Date(date),
-    };
-});
+let gigs = defaultGigs;
 
-const sortedGigs = gigs.sort((a, b) => a.date - b.date);
+if (hasContentfulConfig && contentfulClient) {
+  try {
+    const entries = await contentfulClient.getEntries<Gig>({
+      content_type: "gigDate",
+    });
+
+    gigs = entries.items
+      .map((item) => {
+        const { name, date, location, link } = item.fields;
+        return {
+          name,
+          location,
+          link,
+          date: new Date(date),
+        };
+      })
+      .filter((gig) => gig.name && gig.location && gig.link && gig.date);
+  } catch (error) {
+    console.warn("Unable to load contentful gig data:", error);
+  }
+}
+
+const sortedGigs = gigs.sort((a, b) => a.date.valueOf() - b.date.valueOf());
 ---
 
 <div class="flex justify-center">

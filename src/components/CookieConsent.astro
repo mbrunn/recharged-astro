@@ -13,56 +13,79 @@ import { youtube_video_url } from "@/constants/socials";
         --cookie-consent-banner-z-index-container: 101;
 
         /* COLORS */
-        --cookie-consent-banner-colors-primary: #d07600;
-        --cookie-consent-banner-colors-primary-border: var(
-            --cookie-consent-banner-colors-primary
-        );
-        --cookie-consent-banner-colors-primary-content: #fff;
-        --cookie-consent-banner-colors-secondary: transparent;
-        --cookie-consent-banner-colors-secondary-border: #fff;
-        --cookie-consent-banner-colors-secondary-content: #fff;
-        --cookie-consent-banner-colors-background-body: #333333;
-        --cookie-consent-banner-colors-text: #fff;
+        --cookie-consent-banner-colors-primary: #f59e0b;
+        --cookie-consent-banner-colors-primary-border: transparent;
+        --cookie-consent-banner-colors-primary-content: #0f172a;
+        --cookie-consent-banner-colors-secondary: rgba(255, 255, 255, 0.12);
+        --cookie-consent-banner-colors-secondary-border: rgba(255, 255, 255, 0.2);
+        --cookie-consent-banner-colors-secondary-content: #f8fafc;
+        --cookie-consent-banner-colors-background-body: rgba(15, 23, 42, 0.96);
+        --cookie-consent-banner-colors-text: #e2e8f0;
+        --cookie-consent-banner-colors-body: rgba(15, 23, 42, 1);
 
-        --cookie-consent-banner-border-radius-buttons: 0;
-        --cookie-consent-banner-border-radius-body: 2;
+        --cookie-consent-banner-border-radius-buttons: 999px;
+        --cookie-consent-banner-border-radius-body: 24px;
 
-        --cookie-consent-banner-spacings-container-padding-top: 0;
-        --cookie-consent-banner-spacings-container-padding-left: 0;
-        --cookie-consent-banner-spacings-container-padding-bottom: 0;
-        --cookie-consent-banner-spacings-container-padding-right: 0;
+        --cookie-consent-banner-spacings-container-padding-top: 1.25rem;
+        --cookie-consent-banner-spacings-container-padding-left: 1.25rem;
+        --cookie-consent-banner-spacings-container-padding-bottom: 1.25rem;
+        --cookie-consent-banner-spacings-container-padding-right: 1.25rem;
+        --cookie-consent-banner-spacings-button-vertical: 0.95rem;
+        --cookie-consent-banner-spacings-button-horizontal: 1.25rem;
 
         /* FONTS */
-        --cookie-consent-banner-font-family-headline: inherit;
-        --cookie-consent-banner-font-size-headline: 1.5rem;
-        --cookie-consent-banner-font-family-body: inherit;
-        --cookie-consent-banner-font-size-body: 0.875rem;
+        --cookie-consent-banner-font-family-headline: ui-sans-serif, system-ui, sans-serif;
+        --cookie-consent-banner-font-size-headline: 1.45rem;
+        --cookie-consent-banner-font-family-body: ui-sans-serif, system-ui, sans-serif;
+        --cookie-consent-banner-font-size-body: 0.95rem;
     }
 
-    cookie-consent-banner::part(primary-button) {
-        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    cookie-consent-banner::part(container) {
+        box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    cookie-consent-banner::part(description-main) {
-        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    }
-
-    cookie-consent-banner::part(description),
     cookie-consent-banner::part(headline) {
-        font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: #f8fafc;
+    }
+
+    cookie-consent-banner::part(description-main),
+    cookie-consent-banner::part(description) {
+        color: #cbd5e1;
+        line-height: 1.8;
+    }
+
+    cookie-consent-banner::part(primary-button),
+    cookie-consent-banner::part(secondary-button) {
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding: 0.95rem 1.4rem;
+        min-width: 10rem;
     }
 
     cookie-consent-banner::part(primary-button) {
-        text-transform: uppercase;
+        box-shadow: inset 0 0 0 1px transparent;
     }
 
     cookie-consent-banner::part(secondary-button) {
-        text-transform: uppercase;
-        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        color: #f8fafc;
     }
 
     cookie-consent-banner::part(checkbox) {
-        accent-color: #d07600;
+        accent-color: #f59e0b;
+    }
+
+    cookie-consent-banner::part(footer) {
+        justify-content: flex-end;
+    }
+
+    cookie-consent-banner a {
+        color: #f8fafc;
     }
 </style>
 

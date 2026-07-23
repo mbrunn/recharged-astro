@@ -1,30 +1,87 @@
 ---
 import PersonCard from "./PersonCard.astro";
+import { contentfulClient, hasContentfulConfig } from "../lib/contentful";
+
+interface PersonEntry {
+  name: string;
+  imageSrc: string;
+  position: string;
+  bio?: string;
+}
+
+const fallbackPeople: PersonEntry[] = [
+  {
+    name: "Michael Brunner",
+    imageSrc: "/images/band/michael.jpg",
+    position: "Gesang / Keyboard",
+    bio: "Lead vocals and keyboardist with a passion for emotional songwriting and stage energy.",
+  },
+  {
+    name: "Benjamin Koci",
+    imageSrc: "/images/band/benjamin.jpg",
+    position: "Gitarre / Gesang",
+    bio: "Guitarist and harmony singer known for melodic solos and dynamic rhythm textures.",
+  },
+  {
+    name: "Simon Koci",
+    imageSrc: "/images/band/simon.jpg",
+    position: "Bass",
+    bio: "Bass player who keeps the grooves tight and the entire band moving together.",
+  },
+  {
+    name: "Felix Stefan",
+    imageSrc: "/images/band/felix.jpg",
+    position: "Schlagzeug",
+    bio: "Drummer delivering powerful beats and subtle fills with precision and flair.",
+  },
+];
+
+let people: PersonEntry[] = fallbackPeople;
+
+if (hasContentfulConfig && contentfulClient) {
+  try {
+    const response = await contentfulClient.getEntries({ limit: 100, include: 2 });
+    const fetchedPeople = response.items
+      .map((item: any) => {
+        const fields = item.fields || {};
+        const imageField = fields.image || fields?.photo || fields?.portrait;
+        const imageUrl = imageField?.fields?.file?.url
+          ? imageField.fields.file.url.replace(/^\/\//, "https://")
+          : null;
+
+        return imageUrl && fields.name
+          ? {
+              name: fields.name,
+              imageSrc: imageUrl,
+              position: fields.position || fields.role || fields.instrument || "Bandmitglied",
+              bio: fields.bio || fields.description || fields.intro || "",
+            }
+          : null;
+      })
+      .filter((entry: PersonEntry | null): entry is PersonEntry => Boolean(entry));
+
+    if (fetchedPeople.length > 0) {
+      people = fetchedPeople;
+    }
+  } catch (error) {
+    console.warn("Unable to fetch people from Contentful", error);
+  }
+}
 ---
 
 <div class="flex justify-center">
-    <div
-        class="grid row-auto items-stretch grid-cols-2 sm:grid-cols-4 items-center justify-items-center gap-3 p-4 w-full sm:max-w-6xl"
-    >
+  <div
+    class="grid row-auto items-stretch grid-cols-2 sm:grid-cols-4 items-center justify-items-center gap-3 p-4 w-full sm:max-w-6xl"
+  >
+    {
+      people.map((person) => (
         <PersonCard
-            name="Michael Brunner"
-            imageSrc="/images/band/michael.jpg"
-            position="Gesang / Keyboard"
-        />    
-        <PersonCard
-            name="Benjamin Koci"
-            imageSrc="/images/band/benjamin.jpg"
-            position="Gitarre / Gesang"
+          name={person.name}
+          imageSrc={person.imageSrc}
+          position={person.position}
+          bio={person.bio}
         />
-        <PersonCard
-            name="Simon Koci"
-            imageSrc="/images/band/simon.jpg"
-            position="Bass"
-        />
-        <PersonCard
-            name="Felix Stefan"
-            imageSrc="/images/band/felix.jpg"
-            position="Schlagzeug"
-        />
-    </div>
+      ))
+    }
+  </div>
 </div>
