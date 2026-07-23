@@ -1,6 +1,13 @@
 ---
-const images = await Astro.glob("/public/images/carousel/*.(png|jpg|jpeg)");
-import { Image } from 'astro:assets'
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const carouselDir = path.join(process.cwd(), 'public', 'images', 'carousel');
+const images = fs.readdirSync(carouselDir)
+  .filter((file) => /\.(png|jpe?g)$/i.test(file))
+  .sort()
+  .map((file) => `/images/carousel/${file}`);
 ---
 
 <script>
@@ -66,11 +73,11 @@ import { Image } from 'astro:assets'
               index.toString()
             }
           >
-              <Image
-                alt={image.default}
-                src={image.default}
+                  <img
+                    alt={`Carousel image ${index + 1}`}
+                    src={image}
                 id={"carousel-item-" + index}
-                class="object-contain h-full"
+                    class="object-contain h-full w-full"
               />
           </div>
         ))
