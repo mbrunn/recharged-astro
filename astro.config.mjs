@@ -5,10 +5,13 @@ import sitemap from "@astrojs/sitemap";
 
 import icon from "astro-icon";
 
+import sentry from "@sentry/astro";
+import spotlightjs from "@spotlightjs/astro";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://recharged.at",
-  integrations: [sitemap(), icon()],
+  integrations: [sitemap(), icon(), sentry(), spotlightjs()],
   ssr: {
     noExternal: ['@fortawesome/*']
   }
