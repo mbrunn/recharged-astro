@@ -16,7 +16,7 @@ const cardId = name
 <div class="scene w-full max-w-sm">
   <input type="checkbox" id={cardId} class="peer hidden" />
   <label for={cardId} class="card group cursor-pointer block h-full w-full">
-    <div class="card-inner relative h-full w-full rounded-3xl border border-white/10 bg-secondary text-white shadow-lg shadow-black/20 transition-transform duration-700 ease-in-out peer-checked:rotate-y-180">
+    <div class="card-inner relative h-full w-full rounded-3xl border border-white/10 bg-secondary text-white shadow-lg shadow-black/20 transition-transform duration-700 ease-in-out">
       <div class="card-face card-front absolute inset-0 overflow-hidden rounded-3xl bg-secondary text-white">
         <img
           src={imageSrc}
@@ -74,6 +74,10 @@ const cardId = name
   }
 
   .card-back {
+    transform: rotateY(180deg);
+  }
+
+  input:checked + label .card-inner {
     transform: rotateY(180deg);
   }
 </style>
